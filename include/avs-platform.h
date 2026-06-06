@@ -10,10 +10,16 @@ extern "C" {
 #include <stdint.h>
 #include <stdbool.h>
 
+#define AVS_PFORM_AVSOS 0
+#define AVS_PFORM_AVSOS_KERNEL 1
+#define AVS_PFORM_LINUX 2
+
 #ifdef AVS_ENV_AVSOS_KERNEL
 	#include <kernel_common.h>
 	#include <vfs.h>
 	#include <fs.h>
+
+	#define AVS_PLATFORM AVS_PFORM_AVSOS_KERNEL
 #elif AVS_ENV_LINUX
     #include <stdio.h>
 	#include <stdlib.h>
@@ -22,6 +28,8 @@ extern "C" {
     #include <dirent.h>
     #include <unistd.h>
     #include <errno.h>
+
+	#define AVS_PLATFORM AVS_PFORM_LINUX
 #else
 	#error Unsupported AVS Environment
 #endif
@@ -51,6 +59,27 @@ extern "C" {
 /**************************************/
 /* Functions                          */
 /**************************************/
+
+typedef struct {
+	uint8_t platform;
+
+	uint16_t screen_width;
+	uint16_t screen_height;
+
+	uint32_t *front_buffer;
+	uint32_t *back_buffer;
+
+} avs_platform;
+
+/**************************************/
+/* Functions                          */
+/**************************************/
+
+bool avs_platform_init( void );
+bool avs_platform_init_avsos( avs_platform *avsp );
+bool avs_platform_init_avsos_kernel( avs_platform *avsp );
+bool avs_platform_init_linux( avs_platform *avsp );
+avs_platform* get_avs_platform( void );
 
 #ifdef __cplusplus
 }

@@ -1,5 +1,5 @@
-#ifndef AVS_UI_OBJECT_INCLUDED
-#define AVS_UI_OBJECT_INCLUDED
+#ifndef AVS_DISPLAY_INCLUDED
+#define AVS_DISPLAY_INCLUDED
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -10,7 +10,8 @@ extern "C" {
 namespace AVS {
 	class Display: public Object {
         public:
-        void refresh_all( void );
+            void refresh_all( void );
+            void refresh_rect( Rect *r );
     };
 }
 

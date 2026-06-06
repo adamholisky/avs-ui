@@ -13,9 +13,11 @@ BUILD_DIR := $(ROOT_DIR)/$(BUILD_DIR_NAME)
 
 # Basic variables
 EXE_NAME := avs-ui-test
-SOURCES_C := $(shell ls $(SOURCE_DIR_NAME)/**/*.cpp )
+SOURCES_CPP := $(shell ls $(SOURCE_DIR_NAME)/**/*.cpp )
+SOURCES_C := $(shell ls $(SOURCE_DIR_NAME)/**/*.c )
 HEADERS := $(shell ls $(HEADER_DIR_NAME)/**/*.h )
-OBJECTS_C := $(patsubst %.cpp, $(BUILD_DIR_NAME)/%.o, $(shell echo $(SOURCES_C) | xargs -n 1 basename))
+OBJECTS_CPP := $(patsubst %.cpp, $(BUILD_DIR_NAME)/%.o, $(shell echo $(SOURCES_CPP) | xargs -n 1 basename))
+OBJECTS_C := $(patsubst %.c, $(BUILD_DIR_NAME)/%.o, $(shell echo $(SOURCES_C) | xargs -n 1 basename))
 
 # Path setup
 VPATH = $(shell find $(SOURCE_DIR) -type d -printf "$(SOURCE_DIR_NAME)/%P:")
@@ -24,8 +26,8 @@ VPATH = $(shell find $(SOURCE_DIR) -type d -printf "$(SOURCE_DIR_NAME)/%P:")
 CC := /usr/bin/g++
 LD := /usr/bin/ld
 DEFINES := -DAVS_ENV_LINUX
-CFLAGS := -g -O0 -I$(HEADER_DIR) -lSDL2 -lm -I/usr/include/SDL2
-LDFLAGS := 
+CFLAGS := -g -O0 -I$(HEADER_DIR) -I/usr/include/SDL2
+LDFLAGS := -lSDL2 -lm
 
 # Helpers
 
@@ -60,8 +62,11 @@ clean:
 	rm -rf $(ROOT_DIR)/build-temp/*
 	rm -rf $(EXE_NAME)
 
-$(EXE_NAME): $(OBJECTS_C)
-	$(CC) $(CFLAGS) $(OBJECTS_C) -o $(EXE_NAME)
+$(EXE_NAME): $(OBJECTS_C) $(OBJECTS_CPP)
+	$(CC) $(CFLAGS) $(OBJECTS_C) $(OBJECTS_CPP) $(LDFLAGS) -o $(EXE_NAME)
 
 build/%.o: %.cpp
+	$(CC) $(CFLAGS) $(DEFINES) -fdiagnostics-color=always -c $< -o $(BUILD_DIR_NAME)/$*.o
+
+build/%.o: %.c
 	$(CC) $(CFLAGS) $(DEFINES) -fdiagnostics-color=always -c $< -o $(BUILD_DIR_NAME)/$*.o
