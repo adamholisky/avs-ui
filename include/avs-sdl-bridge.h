@@ -7,6 +7,8 @@ extern "C" {
 #include "avs-platform.h"
 
 bool avs_sdl_init( avs_platform *avsp );
+void avs_sdl_main_loop( void );
+void avs_sdl_update_sdl_window( void );
 
 #ifdef __cplusplus
 }

@@ -55,6 +55,9 @@ mfdebug:
 all: $(EXE_NAME)
 
 run: $(EXE_NAME)
+	./$(EXE_NAME)
+
+run-wayland: $(EXE_NAME)
 	SDL_VIDEODRIVER=wayland ./$(EXE_NAME)
 
 clean:

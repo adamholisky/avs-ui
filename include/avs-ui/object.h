@@ -34,7 +34,11 @@ namespace AVS {
 		virtual void hide( void );
 		virtual void show( void );
 
+		Object( void );
 		virtual ~Object() = default;
+
+		void add_child( Object *obj );
+		Object* find_app( void );
 	};
 }
 

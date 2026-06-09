@@ -34,7 +34,7 @@ namespace AVS {
         void empty( void );
 
         Node* find_data( void *data_to_find, int (*comparison_callback)(void *, void *) );
-        void for_each( void (*for_each_callback)(Node *) );
+        void for_each( void ( *for_each_callback )( void *data ) );
 
         void enqueue( void *data );
         void* dequeue( void );

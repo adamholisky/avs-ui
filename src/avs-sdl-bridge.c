@@ -21,11 +21,53 @@ bool avs_sdl_init( avs_platform *avsp ) {
 	}
 
 	SDL_Surface *screen_surface = SDL_GetWindowSurface( sdl_w );
-	SDL_FillRect( screen_surface, NULL, 0x00374760 );
+	SDL_FillRect( screen_surface, NULL, 0x00FF0000 );
 	SDL_UpdateWindowSurface( sdl_w );
 
 	// Setup the framebuffer
 	uint32_t *fb = (uint32_t *)screen_surface->pixels;
+	avsp->front_buffer = (void *)fb;
 
     return true;
+}
+
+void avs_sdl_update_sdl_window( void ) {
+	SDL_UpdateWindowSurface( sdl_w );
+}
+
+void avs_sdl_main_loop( void ) {
+	SDL_Event e; 
+	bool quit = false; 
+
+	while( quit == false ) {
+		while( SDL_PollEvent( &e ) ) { 
+			int x, y;
+
+			switch( e.type ) {
+				case SDL_QUIT:
+					quit = true;
+					break;
+				case SDL_MOUSEMOTION:
+					SDL_GetMouseState( &x, &y );
+
+					break;
+				case SDL_MOUSEBUTTONDOWN:
+				case SDL_MOUSEBUTTONUP:
+					SDL_GetMouseState( &x, &y );
+
+					//vdf( "mb: %d\n", e.button.button );
+
+					bool lmb = (e.button.button == 1 ? true : false );
+					bool rmb = (e.button.button == 3 ? true : false );
+					
+					if( e.type == SDL_MOUSEBUTTONDOWN ) {
+						//vui_external_event_handler( VUI_EVENT_MOUSE_DOWN, x, y, lmb, rmb );
+					} else {
+						//vui_external_event_handler( VUI_EVENT_MOUSE_UP, x, y, lmb, rmb );
+					}
+					
+					break;
+			}
+		}
+	}
 }

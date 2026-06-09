@@ -43,6 +43,8 @@ namespace AVS {
         Color menubar_background;
         Color menubar_foreground;
         Color menubar_select;
+        
+        uint16_t title_bar_height;
     } Theme;
 
     class Handle {

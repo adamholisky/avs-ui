@@ -259,11 +259,11 @@ void List::free( Node* node ) {
  * @param list Pointer to the avs list
  * @param for_each_callback Pointer to the function to call.
  */
-void List::for_each( void ( *for_each_callback )( Node* ) ) {
+void List::for_each( void ( *for_each_callback )( void *data ) ) {
 	Node* n = head;
 
 	for ( int i = 0; i < size; i++ ) {
-		for_each_callback( n );
+		for_each_callback( n->data );
 		n = n->next;
 	}
 }
