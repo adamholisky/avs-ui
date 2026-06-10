@@ -23,7 +23,8 @@ OBJECTS_C := $(patsubst %.c, $(BUILD_DIR_NAME)/%.o, $(shell echo $(SOURCES_C) | 
 VPATH = $(shell find $(SOURCE_DIR) -type d -printf "$(SOURCE_DIR_NAME)/%P:")
 
 # Compiler control
-CC := /usr/bin/g++
+CC := /usr/bin/gcc
+CPP := /usr/bin/g++
 LD := /usr/bin/ld
 DEFINES := -DAVS_ENV_LINUX
 CFLAGS := -g -O0 -I$(HEADER_DIR) -I/usr/include/SDL2
@@ -66,10 +67,10 @@ clean:
 	rm -rf $(EXE_NAME)
 
 $(EXE_NAME): $(OBJECTS_C) $(OBJECTS_CPP)
-	$(CC) $(CFLAGS) $(OBJECTS_C) $(OBJECTS_CPP) $(LDFLAGS) -o $(EXE_NAME)
+	$(CPP) $(CFLAGS) $(OBJECTS_C) $(OBJECTS_CPP) $(LDFLAGS) -o $(EXE_NAME)
 
 build/%.o: %.cpp
-	$(CC) $(CFLAGS) $(DEFINES) -fdiagnostics-color=always -c $< -o $(BUILD_DIR_NAME)/$*.o
+	$(CPP) $(CFLAGS) $(DEFINES) -fdiagnostics-color=always -c $< -o $(BUILD_DIR_NAME)/$*.o
 
 build/%.o: %.c
 	$(CC) $(CFLAGS) $(DEFINES) -fdiagnostics-color=always -c $< -o $(BUILD_DIR_NAME)/$*.o
