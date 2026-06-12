@@ -20,6 +20,7 @@ namespace AVS {
 		void output_diagnostic( void );
         void run( void );
         void draw( void );
+        char* get_name( void );
 	};
 }
 

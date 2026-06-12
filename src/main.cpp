@@ -15,6 +15,8 @@ class ReferenceApp: public AVS::App {
 
 ReferenceApp::ReferenceApp( void ) : App( "AVS Reference App" ) {
 	w_main = new Window( 10, 10, 1024 - 20, 768 - 20 );
+	w_main->set_title( get_name() );
+
 	add_child( w_main );
 }
 

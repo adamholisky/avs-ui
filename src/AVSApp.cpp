@@ -28,6 +28,10 @@ App::App( const char* disp_name ) : Object() {
 	app_theme.title_bar_height = 25;
 }
 
+char* App::get_name( void ) {
+	return this->display_name;
+}
+
 void App::draw( void ) {
 	printf( "drawing app\n" );
 

@@ -9,10 +9,13 @@ extern "C" {
 /**************************************/
 #include "avs-platform.h"
 #include "avs-ui/object.h"
+#include "avs-ui/font.h"
 
 /**************************************/
-/* System API Macro Config            */
+/* Macros and Defines                 */
 /**************************************/
+#define AVS_FLAG_DRAW_IMMEDIATE 1
+#define AVS_FLAG_DRAW_TRANSPARENT 2
 
 /**************************************/
 /* Data Structures                    *
@@ -63,6 +66,10 @@ namespace AVS {
 /**************************************/
 /* Functions                          *
 /**************************************/
+
+uint16_t avs_draw_string( const char *s, uint16_t x, uint16_t y, uint32_t fg, uint32_t bg, AVS::Font *font, uint16_t size, uint64_t flags );
+
+void avs_draw_char_ttf( uint32_t char_num, uint16_t x, uint16_t y, uint32_t fg, uint32_t bg, AVS::Font *font, uint64_t flags );
 
 #ifdef __cplusplus
 }

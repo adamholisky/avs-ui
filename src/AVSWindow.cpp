@@ -41,6 +41,8 @@ void Window::draw( void ) {
 
     if( has_title_bar ) {
         avs_draw_rect( inner_x, inner_y, inner_width, t->title_bar_height, t->window_title_bar_background );
+
+        avs_draw_string( get_title(), inner_x + 5, inner_y + 5, t->window_title_bar_foreground, t->window_title_bar_background, avs_get_main_font(), 13, 0 );
     }
 
     avs_draw_rect( inner_x, inner_y + t->title_bar_height, inner_width, inner_height - t->title_bar_height, t->window_background );
