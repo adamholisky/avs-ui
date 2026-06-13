@@ -47,6 +47,7 @@ extern "C" {
     #define avs_strcpy kstrcpy
     #define avs_strlen kstrlen
 	#define avs_memcpy kmemcpy
+	#define avs_strcmp kstrcmp
 #elif AVS_ENV_LINUX
 	#define avs_malloc malloc
 	#define avs_realloc realloc
@@ -56,6 +57,7 @@ extern "C" {
     #define avs_strcpy strcpy
     #define avs_strlen strlen
 	#define avs_memcpy memcpy
+	#define avs_strcmp strcmp
 #endif
 
 /**************************************/

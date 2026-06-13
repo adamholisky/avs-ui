@@ -31,12 +31,36 @@ void initalize_fonts( void ) {
 	avs_fonts = new List();
 
 	avs_fonts->append( new Font( AVS_FONT_TYPE_TTF, "FiraCode", "fonts/FiraCode.ttf" ) );
+	avs_fonts->append( new Font( AVS_FONT_TYPE_TTF, "DejaVuSans", "fonts/DejaVuSans.ttf" ) );
 }
 
 Font* avs_get_main_font( void ) {
 	printf( "%s\n", ((Font *)(avs_fonts->at_index_data(0)))->name );
 
 	return (Font *)avs_fonts->at_index_data(0);
+}
+
+/**
+ * @brief Returns the font <name>.
+ * 
+ * @param name text string of the font's name 
+ * @return Font* Font object that matches name, otherwise NULL.
+ */
+Font* avs_get_font( const char *name ) {
+	Font *result = nullptr;
+	char name_to_find[50];
+	avs_strcpy( name_to_find, name );
+
+	Node *n = avs_fonts->find_data( (void *)name, []( void *a, void *b ) -> int {
+		Font *b_f = (Font *)b;
+		return avs_strcmp( (char *)a, b_f->name );
+	});
+
+	if( n != nullptr ) {
+		result = (Font *)n->data;
+	}
+
+	return result;
 }
 
 Font::Font( uint8_t type, const char* font_name, const char* font_file_name ) {

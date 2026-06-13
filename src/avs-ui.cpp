@@ -1,8 +1,6 @@
 #include "avs-ui.h"
 
-
 using namespace AVS;
-
 
 uint16_t avs_draw_string( const char *s, uint16_t x, uint16_t y, uint32_t fg, uint32_t bg, AVS::Font *font, uint16_t size, uint64_t flags ) {
 	int len = strlen(s);

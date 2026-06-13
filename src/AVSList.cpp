@@ -255,7 +255,12 @@ void List::free( Node* node ) {
 
 /**
  * @brief Calls function 'for_each_callback' for every node in the list
- *
+ * 
+ * []( void *my_obj ) {
+ *     Object *obj = static_cast<Object *>(my_obj);
+ *     do_stuff();
+ * }
+ * 
  * @param list Pointer to the avs list
  * @param for_each_callback Pointer to the function to call.
  */

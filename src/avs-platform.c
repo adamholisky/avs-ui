@@ -1,5 +1,4 @@
 #include "avs-platform.h"
-#include "avs-ui.h"
 #include "avs-sdl-bridge.h"
 
 avs_platform avs_p;

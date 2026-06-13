@@ -1,6 +1,5 @@
 #include "avs-sdl-bridge.h"
 #include "avs-platform.h"
-#include "avs-ui.h"
 
 #include <SDL.h>
 #include <SDL_render.h>

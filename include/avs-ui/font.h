@@ -45,6 +45,7 @@ namespace AVS {
 
 void initalize_fonts( void );
 AVS::Font* avs_get_main_font( void );
+AVS::Font* avs_get_font( const char *name );
 
 #ifdef __cplusplus
 }
