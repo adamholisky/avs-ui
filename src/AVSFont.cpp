@@ -186,3 +186,49 @@ void Font::load_ttf( void ) {
 		memcpy( bitmaps[i].pixel, img.pixels, 2 * bitmaps[i].width * bitmaps[i].height);
 	}
 }
+
+/**
+ * @brief Load the requested glyph into bitmap. The caller of this function MUST allocate bitmap 
+ * and bitmap.pixel BEFORE calling. Pixel should have enough space to accomidate the size and 
+ * platform color usage.
+ * 
+ * @param code 
+ * @param bitmap 
+ * @return bool Returns true if successful, false otherwise
+ */
+bool Font::get_glyph( uint32_t code, font_ttf_bitmap *bitmap ) {
+	if( bitmap == NULL ) {
+		return false;
+	}
+
+	SFT_Glyph g;
+
+	int lookup_result = sft_lookup( &sft, code, &g);
+
+	if( lookup_result == -1 ) {
+		printf( "Glyph lookup failed for 0x%X.\n", code );
+
+		return false;
+	}
+
+	SFT_GMetrics glyph_metrics;
+	int gmetrics_res = sft_gmetrics( &sft, g, &glyph_metrics );
+
+	bitmap->x_offset = glyph_metrics.leftSideBearing;
+	bitmap->y_offset = -glyph_metrics.yOffset;
+	bitmap->advance = glyph_metrics.advanceWidth;
+	bitmap->width = glyph_metrics.minWidth;
+	bitmap->height = glyph_metrics.minHeight;
+	bitmap->pixel = (uint8_t *)avs_malloc( 2 * bitmap->width * bitmaps->height ); 
+
+	SFT_Image img = {
+		.pixels = bitmap->pixel,
+		.width = glyph_metrics.minWidth,
+		.height = glyph_metrics.minHeight
+	};
+
+	int render_res = sft_render( &sft, g, img );
+	printf( "code: 0x%X, render_res: %d\n", code, render_res );
+
+	return true;
+}

@@ -40,6 +40,8 @@ namespace AVS {
             uint16_t width;
 
             Font( uint8_t type, const char *font_name, const char *font_file_name );
+
+            bool get_glyph( uint32_t code, font_ttf_bitmap *bitmap );
 	};
 }
 
