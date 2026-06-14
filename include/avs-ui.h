@@ -69,7 +69,7 @@ namespace AVS {
 
 uint16_t avs_draw_string( const char *s, uint16_t x, uint16_t y, uint32_t fg, uint32_t bg, AVS::Font *font, uint16_t size, uint64_t flags );
 
-void avs_draw_char_ttf( uint32_t char_num, uint16_t x, uint16_t y, uint32_t fg, uint32_t bg, AVS::Font *font, uint64_t flags );
+uint16_t avs_draw_char_ttf( uint32_t char_num, uint16_t x, uint16_t y, uint32_t fg, uint32_t bg, AVS::Font *font, uint16_t size, uint64_t flags );
 
 void avs_render_ttf_bitmap( uint16_t x, uint16_t y, uint32_t fg, uint32_t bg, AVS::font_ttf_bitmap *bitmap );
 

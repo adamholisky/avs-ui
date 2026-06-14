@@ -64,12 +64,12 @@ uint16_t avs_draw_string( const char *s, uint16_t x, uint16_t y, uint32_t fg, ui
 		if( f->type == AVS_FONT_TYPE_TTF ) {
 			uint32_t char_num = *s;
 
-			avs_draw_char_ttf( char_num, current_x, y, fg, bg, f, flags );
+			uint16_t advance_x = avs_draw_char_ttf( char_num, current_x, y, fg, bg, f, size, flags );
 
 			//vdf( "final width: %d\n", font->ttf_bitmaps[char_num].advance + 1 );
 
-			current_x = current_x + f->bitmaps[char_num].advance + 1;
-			pix_len = pix_len + f->bitmaps[char_num].advance + 1;
+			current_x = current_x + advance_x + 1;
+			pix_len = pix_len + advance_x + 1;
 		}
 		
 		s++;
@@ -78,27 +78,52 @@ uint16_t avs_draw_string( const char *s, uint16_t x, uint16_t y, uint32_t fg, ui
 	return pix_len;
 }
 
-
-void avs_draw_char_ttf( uint32_t char_num, uint16_t x, uint16_t y, uint32_t fg, uint32_t bg, AVS::Font *font, uint64_t flags ) {
+/**
+ * @brief Draws the given character
+ * 
+ * @param char_num 
+ * @param x 
+ * @param y 
+ * @param fg 
+ * @param bg 
+ * @param font 
+ * @param size 
+ * @param flags 
+ * @return uint16_t the amount to advance x pixels forward to account for the character
+ */
+uint16_t avs_draw_char_ttf( uint32_t char_num, uint16_t x, uint16_t y, uint32_t fg, uint32_t bg, AVS::Font *font, uint16_t size, uint64_t flags ) {
 	//vdf( "draw: %X (%c)\n", char_num, (char)char_num );
 	avs_platform *avsp = get_avs_platform();
 
-	uint32_t y_offset = (font->size - font->bitmaps[(uint8_t)char_num].y_offset);
+	font_size *fs = font->get_size( size );
+	font_ttf_bitmap *bitm = nullptr;
 
-	for( int i = 0; i < font->bitmaps[(uint8_t)char_num].height + y_offset; i++ ) {
+	if( char_num < 256 ) {
+		bitm = &fs->bitmaps[char_num];
+	} else {
+		if( !font->get_glyph(char_num, size, bitm) ) {
+			// TODO: Output a ? character or something
+			printf( "failed to load bitmap for glyph %d\n", char_num );
+			return 0;
+		}
+	}
+
+	uint32_t y_offset = (bitm->height - bitm->y_offset);
+
+	for( int i = 0; i < bitm->height + y_offset; i++ ) {
 		uint32_t pix_row = i;
 		if( y_offset != 0 && i >= y_offset) {
 			pix_row = i - y_offset;
 			//vdf( "%c: %d ->  %d ", (char)char_num, y_offset, pix_row );
 		}
 
-		uint32_t *loc = (uint *)avsp->back_buffer + ((y+i) * (avsp->screen_pitch / 4)) + x + font->bitmaps[char_num].x_offset;
-		uint32_t *loc_imm = (uint *)avsp->front_buffer + ((y+i) * (avsp->screen_pitch / 4)) + x + font->bitmaps[char_num].x_offset;
+		uint32_t *loc = (uint *)avsp->back_buffer + ((y+i) * (avsp->screen_pitch / 4)) + x + bitm->x_offset;
+		uint32_t *loc_imm = (uint *)avsp->front_buffer + ((y+i) * (avsp->screen_pitch / 4)) + x + bitm->x_offset;
 		
 		//vdf( "Row: %d == %X\n", i, font->bitmaps[index].pixel_row[i] );
 		//vdf( "\"" );
 		//for( int j = 0; j != font->info.width; j++ ) {
-		for( int j = 0; j != font->bitmaps[char_num].width; j++ ) {
+		for( int j = 0; j != bitm->width; j++ ) {
 			// handle the y-offset
 			if( i < y_offset ) {
 				//vdf( "offset %d (max: %d)\n", i, abs() );
@@ -111,10 +136,10 @@ void avs_draw_char_ttf( uint32_t char_num, uint16_t x, uint16_t y, uint32_t fg, 
 			}
 
 			// render as normal
-			if( font->bitmaps[(uint8_t)char_num].pixel[(pix_row * font->bitmaps[(uint8_t)char_num].width) + j] ) {
+			if( bitm->pixel[(pix_row * bitm->width) + j] ) {
 				//vdf( "*" );
 
-				float adjust = font->bitmaps[(uint8_t)char_num].pixel[(pix_row * font->bitmaps[(uint8_t)char_num].width) + j];
+				float adjust = bitm->pixel[(pix_row * bitm->width) + j];
 
 				uint8_t red_bg = ((bg & 0x00FF0000) >> 16);
 				uint8_t red = ((fg & 0x00FF0000) >> 16);
@@ -145,4 +170,6 @@ void avs_draw_char_ttf( uint32_t char_num, uint16_t x, uint16_t y, uint32_t fg, 
 		}
 		//vdf( "\"\n" );
 	}
+
+	return bitm->advance;
 }

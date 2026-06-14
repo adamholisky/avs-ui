@@ -30,8 +30,8 @@ uint16_t dos_code_page[256] = {
 void initalize_fonts( void ) {
 	avs_fonts = new List();
 
-	avs_fonts->append( new Font( AVS_FONT_TYPE_TTF, "FiraCode", "fonts/FiraCode.ttf" ) );
-	avs_fonts->append( new Font( AVS_FONT_TYPE_TTF, "DejaVuSans", "fonts/DejaVuSans.ttf" ) );
+	avs_fonts->append( new Font( "FiraCode", "fonts/FiraCode.ttf" ) );
+	avs_fonts->append( new Font( "DejaVuSans", "fonts/DejaVuSans.ttf" ) );
 }
 
 Font* avs_get_main_font( void ) {
@@ -63,7 +63,13 @@ Font* avs_get_font( const char *name ) {
 	return result;
 }
 
-Font::Font( uint8_t type, const char* font_name, const char* font_file_name ) {
+/**
+ * @brief Construct a new Font object
+ * 
+ * @param font_name 
+ * @param font_file_name 
+ */
+Font::Font( const char* font_name, const char* font_file_name ) {
 	avs_strcpy( name, font_name );
 	avs_strcpy( file_name, font_file_name );
 
@@ -88,9 +94,12 @@ Font::Font( uint8_t type, const char* font_name, const char* font_file_name ) {
 
 	printf( "Read %d from font %s.\n", data_size, file_name );
 
+	type = AVS_FONT_TYPE_TTF;
+	sizes = new List();
+
 	switch ( type ) {
 		case AVS_FONT_TYPE_TTF:
-			load_ttf();
+			prime_cache( 13 );
 			break;
 		default:
 			printf( "Unknown font type, halting. Got %d.\n", type );
@@ -98,93 +107,98 @@ Font::Font( uint8_t type, const char* font_name, const char* font_file_name ) {
 	}
 }
 
-void Font::load_ttf( void ) {
-	printf( "loading %s\n", name );
+/**
+ * @brief Preload the glyphs for the given font size
+ * 
+ * @param size 
+ * @return font_size* 
+ */
+font_size* Font::prime_cache( uint16_t size ) {
+	printf( "priming cache for font %s at size %d\n", name, size );
 
-	type = AVS_FONT_TYPE_TTF;
-	size = 13;
-	height = 13;
-	width = 13;
-	glyph_count = 256;
-	bitmaps = (font_ttf_bitmap *)avs_malloc( glyph_count * sizeof(font_ttf_bitmap) );
-	
-	for( int i = 0; i < glyph_count; i++ ) {
-		//font->ttf_bitmaps[i].pixel = vmalloc( 2 * font->size * font->size ); 
-	}
+	font_size *fs = (font_size *)avs_malloc( sizeof(font_size) );
+	fs->bitmap_count = 256;
+	fs->bitmaps = (font_ttf_bitmap *)avs_malloc( fs->bitmap_count * sizeof(font_ttf_bitmap) );
 
-	sft.xScale = size;
-	sft.yScale = size,
-	sft.flags = SFT_DOWNWARD_Y;
+	fs->sft.xScale = size;
+	fs->sft.yScale = size,
+	fs->sft.flags = SFT_DOWNWARD_Y;
 
-	//sft.font = sft_loadfile("./fira_code.ttf");
-	sft.font = sft_loadmem( data, data_size );
+	fs->sft.font = sft_loadmem( data, data_size );
 
-	if( sft.font == NULL ) {
+	if( fs->sft.font == NULL ) {
 		printf( "sft font failed to load\n" );
-		return;
+		return nullptr;
 	}
 
 	SFT_LMetrics line_metrics;
-	sft_lmetrics( &sft, &line_metrics );
-	//vdf( "asc: %f    dsc: %f    lineGap: %f\n", line_metrics.ascender, line_metrics.descender, line_metrics.lineGap );
-	height = 13;
+	sft_lmetrics( &fs->sft, &line_metrics );
 
 	SFT_Glyph test_glyph;
-	sft_lookup( &sft, 'V', &test_glyph );
+	sft_lookup( &fs->sft, 'V', &test_glyph );
 	SFT_GMetrics glyph_metrics;
-	sft_gmetrics( &sft, test_glyph, &glyph_metrics );
-	width = glyph_metrics.advanceWidth;
-
-	//printf( "%f\n", glyph_metrics.advanceWidth );
-
+	sft_gmetrics( &fs->sft, test_glyph, &glyph_metrics );
+	fs->bitmap_width = glyph_metrics.advanceWidth;
+	fs->bitmap_height = glyph_metrics.minHeight;
 
 	SFT_Glyph v;
-	
-
-/* 	memset( img.pixels, 0, 2 * 20 * 20 );
-	vdf( "lookup result: %d\n", sft_lookup( &sft, 0xf0e1e, &v ) );
-	vdf( "render result: %d\n", sft_render( &sft, v, img ) );
-	memcpy( font->ttf_bitmaps[0].pixel, img.pixels, 2 * 20 * 20 );
-
-	memset( img.pixels, 0, 2 * 20 * 20 );
-	vdf( "lookup result: %d\n", sft_lookup( &sft, 0xf0cdf, &v ) );
-	vdf( "render result: %d\n", sft_render( &sft, v, img ) );
-	memcpy( font->ttf_bitmaps[1].pixel, img.pixels, 2 * 20 * 20 ); */
-
-	void *pix_store = avs_malloc(2 * 100 * 100);
 
 	for( int i = 0; i < 256; i++ ) {
-		//vdf( "rendering %d\n", i );
-		int lookup_res = sft_lookup( &sft, dos_code_page[i], &v );
-
-		//vdf( "lookup_res: %d\n", lookup_res );
+		int lookup_res = sft_lookup( &fs->sft, dos_code_page[i], &v );
 		
 		SFT_GMetrics glyph_metrics;
-		int gmetrics_res = sft_gmetrics( &sft, v, &glyph_metrics );
-		//vdf( "gmetrics_res: %d\n", gmetrics_res );
+		int gmetrics_res = sft_gmetrics( &fs->sft, v, &glyph_metrics );
 
-		bitmaps[i].x_offset = glyph_metrics.leftSideBearing;
-		bitmaps[i].y_offset = -glyph_metrics.yOffset;
-		bitmaps[i].advance = glyph_metrics.advanceWidth;
-		bitmaps[i].width = glyph_metrics.minWidth;
-		bitmaps[i].height = glyph_metrics.minHeight;
-		bitmaps[i].pixel = (uint8_t *)avs_malloc( 2 * bitmaps[i].width * bitmaps[i].height ); 
+		fs->bitmaps[i].x_offset = glyph_metrics.leftSideBearing;
+		fs->bitmaps[i].y_offset = -glyph_metrics.yOffset;
+		fs->bitmaps[i].advance = glyph_metrics.advanceWidth;
+		fs->bitmaps[i].width = glyph_metrics.minWidth;
+		//fs->bitmaps[i].height = glyph_metrics.minHeight;
+		fs->bitmaps[i].height = size;
+
+		uint16_t alloc_height = fs->bitmaps[i].y_offset + fs->bitmaps[i].height;
+		uint16_t alloc_width = fs->bitmaps[i].x_offset + fs->bitmaps[i].width;
 		
-		memset( pix_store, 0, 2 * 100 * 100 );
+		alloc_height = 100;
+		alloc_width = 100;
+
+		printf( "alloc %d: %d * %d = %d\n", i, alloc_height, alloc_width, alloc_height * alloc_width );
+		fs->bitmaps[i].pixel = (uint8_t *)avs_malloc(alloc_height * alloc_width);
+		
+		memset( fs->bitmaps[i].pixel, 0, alloc_height * alloc_width );
 
 		SFT_Image img = {
-			.pixels = pix_store,
+			.pixels = fs->bitmaps[i].pixel,
 			.width = glyph_metrics.minWidth,
 			.height = glyph_metrics.minHeight
 		};
 
-		//vdf( "\'%c\' y_offset: %d\n", i, font->ttf_bitmaps[i].y_offset );
-		//memset( img.pixels, 0, 2 * font->ttf_bitmaps[i].width * font->ttf_bitmaps[i].height );
-		int render_res = sft_render( &sft, v, img );
-		//printf( "render_res: %d\n", render_res );
-
-		memcpy( bitmaps[i].pixel, img.pixels, 2 * bitmaps[i].width * bitmaps[i].height);
+		int render_res = sft_render( &fs->sft, v, img );
 	}
+
+	return fs;
+}
+
+/**
+ * @brief Return object with bitmaps of the given size
+ * 
+ * @param size 
+ * @param do_prime_cache 
+ * @return font_size* 
+ */
+font_size* Font::get_size( uint16_t size, bool do_prime_cache ) {
+	font_size *fs = (font_size *)sizes->find_data( &size, [](void *a, void *b) -> int {
+		int fs_int_a = *(int *)a;
+		font_size *fs_b = (font_size *)b;
+
+		return fs_int_a == fs_b->font_size ? 1 : 0; 
+	});
+
+	if( fs == nullptr && do_prime_cache ) {
+		fs = prime_cache( size );
+	}
+
+	return fs;
 }
 
 /**
@@ -196,14 +210,20 @@ void Font::load_ttf( void ) {
  * @param bitmap 
  * @return bool Returns true if successful, false otherwise
  */
-bool Font::get_glyph( uint32_t code, font_ttf_bitmap *bitmap ) {
+bool Font::get_glyph( uint32_t code, uint16_t size, font_ttf_bitmap *bitmap ) {
 	if( bitmap == NULL ) {
+		return false;
+	}
+
+	font_size *fs = get_size( size );
+
+	if( fs == NULL ) {
 		return false;
 	}
 
 	SFT_Glyph g;
 
-	int lookup_result = sft_lookup( &sft, code, &g);
+	int lookup_result = sft_lookup( &fs->sft, code, &g );
 
 	if( lookup_result == -1 ) {
 		printf( "Glyph lookup failed for 0x%X.\n", code );
@@ -212,14 +232,15 @@ bool Font::get_glyph( uint32_t code, font_ttf_bitmap *bitmap ) {
 	}
 
 	SFT_GMetrics glyph_metrics;
-	int gmetrics_res = sft_gmetrics( &sft, g, &glyph_metrics );
+	int gmetrics_res = sft_gmetrics( &fs->sft, g, &glyph_metrics );
 
 	bitmap->x_offset = glyph_metrics.leftSideBearing;
 	bitmap->y_offset = -glyph_metrics.yOffset;
 	bitmap->advance = glyph_metrics.advanceWidth;
 	bitmap->width = glyph_metrics.minWidth;
 	bitmap->height = glyph_metrics.minHeight;
-	bitmap->pixel = (uint8_t *)avs_malloc( 2 * bitmap->width * bitmaps->height ); 
+	//bitmap->pixel = (uint8_t *)avs_malloc( 2 * bitmap->width * bitmaps->height ); 
+	bitmap->pixel = (uint8_t *)avs_malloc( 1000 ); 
 
 	SFT_Image img = {
 		.pixels = bitmap->pixel,
@@ -227,7 +248,7 @@ bool Font::get_glyph( uint32_t code, font_ttf_bitmap *bitmap ) {
 		.height = glyph_metrics.minHeight
 	};
 
-	int render_res = sft_render( &sft, g, img );
+	int render_res = sft_render( &fs->sft, g, img );
 	printf( "code: 0x%X, render_res: %d\n", code, render_res );
 
 	return true;

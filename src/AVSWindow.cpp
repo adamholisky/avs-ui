@@ -42,7 +42,7 @@ void Window::draw( void ) {
     if( has_title_bar ) {
         avs_draw_rect( inner_x, inner_y, inner_width, t->title_bar_height, t->window_title_bar_background );
 
-        avs_draw_string( get_title(), inner_x + 5, inner_y + 5, t->window_title_bar_foreground, t->window_title_bar_background, avs_get_font("DejaVuSans"), 13, 0 );
+        avs_draw_string( get_title(), inner_x + 5, inner_y + 3, t->window_title_bar_foreground, t->window_title_bar_background, avs_get_font("DejaVuSans"), 13, 0 );
 
         static font_ttf_bitmap *close_button;
 
@@ -51,13 +51,13 @@ void Window::draw( void ) {
             close_button->pixel = (uint8_t *)avs_malloc( 4 * 100 * 100 );
 
             Font *f_fira_code = avs_get_font("FiraCode");
-            if( !f_fira_code->get_glyph( 0xf0159, close_button ) ) {
+            if( !f_fira_code->get_glyph( 0xf0159, 25, close_button ) ) {
                 printf( "Close button failed to load.\n" );
             }
         }
 
         if( close_button != NULL ) {
-            avs_render_ttf_bitmap( inner_x + inner_width - 25, inner_y + 5, t->window_title_bar_foreground, t->window_title_bar_background, close_button );
+            avs_render_ttf_bitmap( inner_x + inner_width - 22, inner_y + 3, t->window_title_bar_foreground, t->window_title_bar_background, close_button );
         }
     }
 
