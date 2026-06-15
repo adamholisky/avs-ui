@@ -3,12 +3,14 @@
 #include "avs-ui/app.h"
 #include "avs-ui/window.h"
 #include "avs-ui/font.h"
+#include "avs-ui/label.h"
 
 using namespace AVS;
 	
 class ReferenceApp: public AVS::App {
 	private:
 		Window *w_main;
+		Label *l_mylabel;
 	public:
 		ReferenceApp( void );
 };
@@ -17,7 +19,10 @@ ReferenceApp::ReferenceApp( void ) : App( "AVS Reference App" ) {
 	w_main = new Window( 10, 10, 1024 - 20, 768 - 20 );
 	w_main->set_title( get_name() );
 
+	l_mylabel = new Label( "My ReferenceApp Label is a thing", 5, 5, 0xFFFFFF, 0x000000 );
+
 	add_child( w_main );
+	add_child( w_main, l_mylabel );
 }
 
 int main( int argc, char* argv[] ) {

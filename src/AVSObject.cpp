@@ -29,12 +29,19 @@ void Object::draw( void ) {
 	}
 }
 
-void Object::add_child( Object* obj ) {
-	obj->parent = this;
+void Object::add_child( Object* obj_child ) {
+	obj_child->parent = this;
 
 	if ( children != NULL ) {
-		children->push( obj );
+		children->push( obj_child );
 	}
+}
+
+void Object::add_child( Object *obj_parent, Object *obj_child ) {
+	if( obj_parent == nullptr ) { return; }
+	if( obj_child == nullptr ) { return; }
+
+	obj_parent->add_child( obj_child );
 }
 
 /**

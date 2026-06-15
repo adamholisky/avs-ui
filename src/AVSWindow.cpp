@@ -44,13 +44,14 @@ void Window::draw( void ) {
 
         avs_draw_string( get_title(), inner_x + 5, inner_y + 3, t->window_title_bar_foreground, t->window_title_bar_background, avs_get_font("DejaVuSans"), 13, 0 );
 
+        Font *f_fira_code;
         static font_ttf_bitmap *close_button;
 
-        if( close_button == NULL ) {
+       if( close_button == NULL ) {
             close_button = (AVS::font_ttf_bitmap *)avs_malloc( sizeof(AVS::font_ttf_bitmap) );
             close_button->pixel = (uint8_t *)avs_malloc( 4 * 100 * 100 );
 
-            Font *f_fira_code = avs_get_font("FiraCode");
+            f_fira_code = avs_get_font("FiraCode");
             if( !f_fira_code->get_glyph( 0xf0159, 25, close_button ) ) {
                 printf( "Close button failed to load.\n" );
             }

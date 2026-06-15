@@ -29,6 +29,11 @@ namespace AVS {
 		uint16_t inner_width;
 		uint16_t inner_height;
 
+		uint16_t relative_x;
+		uint16_t relative_y;
+		uint16_t relative_width;
+		uint16_t relative_height;
+
 		virtual void output_diagnostic( void ) = 0;
 		virtual void draw( void );
 		virtual void hide( void );
@@ -37,7 +42,8 @@ namespace AVS {
 		Object( void );
 		virtual ~Object() = default;
 
-		void add_child( Object *obj );
+		void add_child( Object *obj_child );
+		void add_child( Object *obj_parent, Object *ojb_child );
 		Object* find_app( void );
 	};
 }
