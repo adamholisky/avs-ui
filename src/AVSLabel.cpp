@@ -5,13 +5,13 @@
 
 using namespace AVS;
 
-Label::Label( char *t, uint16_t x_cords, uint16_t y_cords, uint32_t fg, uint32_t bg ) : Object() {
+Label::Label( const char *t, uint16_t x_cords, uint16_t y_cords, uint32_t fg, uint32_t bg ) : Object() {
     x = x_cords;
     y = y_cords;
     color_fg = fg;
     color_bg = bg;
 
-    set_text( t );
+    set_text( (char *)t );
 }
 
 void Label::output_diagnostic( void ) {
@@ -44,5 +44,9 @@ void Label::draw( void ) {
         if( f == nullptr ) { f = avs_get_main_font(); }
     }
 
-    avs_draw_string( text, x, y, color_fg, color_bg, f, size, 0 );
+    uint64_t flags = 0;
+
+    flags =+ is_transparent ? AVS_FLAG_DRAW_TRANSPARENT : 0;
+
+    avs_draw_string( text, get_absolute_x(), get_absolute_y(), color_fg, color_bg, f, size, flags );
 }

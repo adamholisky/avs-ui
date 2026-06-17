@@ -114,7 +114,7 @@ Font::Font( const char* font_name, const char* font_file_name ) {
  * @return font_size* 
  */
 font_size* Font::prime_cache( uint16_t size ) {
-	printf( "priming cache for font %s at size %d\n", name, size );
+	//printf( "priming cache for font %s at size %d\n", name, size );
 
 	font_size *fs = (font_size *)avs_malloc( sizeof(font_size) );
 	fs->bitmap_count = 256;
@@ -162,7 +162,7 @@ font_size* Font::prime_cache( uint16_t size ) {
 		alloc_height = 100;
 		alloc_width = 100;
 
-		printf( "alloc %d: %d * %d = %d\n", i, alloc_height, alloc_width, alloc_height * alloc_width );
+		//printf( "alloc %d: %d * %d = %d\n", i, alloc_height, alloc_width, alloc_height * alloc_width );
 		fs->bitmaps[i].pixel = (uint8_t *)avs_malloc(alloc_height * alloc_width);
 		
 		memset( fs->bitmaps[i].pixel, 0, alloc_height * alloc_width );

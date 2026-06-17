@@ -4,26 +4,28 @@
 #include "avs-ui/window.h"
 #include "avs-ui/font.h"
 #include "avs-ui/label.h"
+#include "avs-ui/console.h"
 
 using namespace AVS;
 	
 class ReferenceApp: public AVS::App {
 	private:
 		Window *w_main;
-		Label *l_mylabel;
+		Console *c_main;
 	public:
-		ReferenceApp( void );
+		ReferenceApp( void ) : App( "AVS Reference App" ) {
+			w_main = new Window( 10, 10, 1024 - 20, 768 - 20 );
+			w_main->set_title( get_name() );
+
+			/* l_mylabel = new Label( "My ReferenceApp Label is a thing", 5, 5, 0xFFFFFF, 0x000000 );
+			l_mylabel->is_transparent = true; */
+
+			c_main = new Console( 0, 0, w_main->inner_width, w_main->inner_height, 0xFFFFFF, 0 );
+
+			add_child( w_main );
+			add_child( w_main, c_main );
+		}
 };
-
-ReferenceApp::ReferenceApp( void ) : App( "AVS Reference App" ) {
-	w_main = new Window( 10, 10, 1024 - 20, 768 - 20 );
-	w_main->set_title( get_name() );
-
-	l_mylabel = new Label( "My ReferenceApp Label is a thing", 5, 5, 0xFFFFFF, 0x000000 );
-
-	add_child( w_main );
-	add_child( w_main, l_mylabel );
-}
 
 int main( int argc, char* argv[] ) {
 	printf( "AVS UI Development Environment Started\n" );
@@ -42,7 +44,3 @@ int main( int argc, char* argv[] ) {
 
 	return 0;
 }
-
-#ifdef AVS_ENV_LINUX
-
-#endif

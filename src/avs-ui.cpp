@@ -92,7 +92,6 @@ uint16_t avs_draw_string( const char *s, uint16_t x, uint16_t y, uint32_t fg, ui
  * @return uint16_t the amount to advance x pixels forward to account for the character
  */
 uint16_t avs_draw_char_ttf( uint32_t char_num, uint16_t x, uint16_t y, uint32_t fg, uint32_t bg, AVS::Font *font, uint16_t size, uint64_t flags ) {
-	//vdf( "draw: %X (%c)\n", char_num, (char)char_num );
 	avs_platform *avsp = get_avs_platform();
 
 	font_size *fs = font->get_size( size );
@@ -114,20 +113,14 @@ uint16_t avs_draw_char_ttf( uint32_t char_num, uint16_t x, uint16_t y, uint32_t 
 		uint32_t pix_row = i;
 		if( y_offset != 0 && i >= y_offset) {
 			pix_row = i - y_offset;
-			//vdf( "%c: %d ->  %d ", (char)char_num, y_offset, pix_row );
 		}
 
 		uint32_t *loc = (uint *)avsp->back_buffer + ((y+i) * (avsp->screen_pitch / 4)) + x + bitm->x_offset;
 		uint32_t *loc_imm = (uint *)avsp->front_buffer + ((y+i) * (avsp->screen_pitch / 4)) + x + bitm->x_offset;
 		
-		//vdf( "Row: %d == %X\n", i, font->bitmaps[index].pixel_row[i] );
-		//vdf( "\"" );
-		//for( int j = 0; j != font->info.width; j++ ) {
 		for( int j = 0; j != bitm->width; j++ ) {
 			// handle the y-offset
 			if( i < y_offset ) {
-				//vdf( "offset %d (max: %d)\n", i, abs() );
-
 				if( !(flags & AVS_FLAG_DRAW_TRANSPARENT) ) {
 					*(loc + j) = bg;
 					if( flags & AVS_FLAG_DRAW_IMMEDIATE ) { *(loc_imm + j) = bg; }
@@ -137,8 +130,6 @@ uint16_t avs_draw_char_ttf( uint32_t char_num, uint16_t x, uint16_t y, uint32_t 
 
 			// render as normal
 			if( bitm->pixel[(pix_row * bitm->width) + j] ) {
-				//vdf( "*" );
-
 				float adjust = bitm->pixel[(pix_row * bitm->width) + j];
 
 				uint8_t red_bg = ((bg & 0x00FF0000) >> 16);
@@ -160,15 +151,12 @@ uint16_t avs_draw_char_ttf( uint32_t char_num, uint16_t x, uint16_t y, uint32_t 
 
 				
 			} else {
-				//vdf( " " );
-
 				if( !(flags & AVS_FLAG_DRAW_TRANSPARENT) ) {
 					*(loc + j) = bg;
 					if( flags & AVS_FLAG_DRAW_IMMEDIATE ) { *(loc_imm + j) = bg; }
 				}
 			}
 		}
-		//vdf( "\"\n" );
 	}
 
 	return bitm->advance;

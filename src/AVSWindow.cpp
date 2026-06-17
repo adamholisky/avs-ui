@@ -19,6 +19,9 @@ Window::Window( uint16_t upper_left_x, uint16_t upper_left_y, uint16_t width, ui
     this->inner_width = width - 2;
     this->inner_height = height - 2;
 
+    this->container_offset_x = 0;
+    this->container_offset_y = 25;
+
     this->is_container = true;
     this->is_drawable = true;
     this->is_hover = false;

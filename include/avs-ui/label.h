@@ -20,7 +20,13 @@ namespace AVS {
 			uint32_t color_fg;
 			uint32_t color_bg;
 
-			Label( char *t, uint16_t x_cords, uint16_t y_cords, uint32_t fg, uint32_t bg );
+			/**
+			 * @brief True if the background is transparent
+			 * 
+			 */
+			bool is_transparent;
+
+			Label( const char *t, uint16_t x_cords, uint16_t y_cords, uint32_t fg, uint32_t bg );
 			void output_diagnostic( void );
 			void set_text( char *t );
 			const char *get_text( void );
