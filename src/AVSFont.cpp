@@ -140,6 +140,7 @@ font_size* Font::prime_cache( uint16_t size ) {
 	sft_gmetrics( &fs->sft, test_glyph, &glyph_metrics );
 	fs->bitmap_width = glyph_metrics.advanceWidth;
 	fs->bitmap_height = glyph_metrics.minHeight;
+	fs->height = size;
 
 	SFT_Glyph v;
 
@@ -191,7 +192,7 @@ font_size* Font::get_size( uint16_t size, bool do_prime_cache ) {
 		int fs_int_a = *(int *)a;
 		font_size *fs_b = (font_size *)b;
 
-		return fs_int_a == fs_b->font_size ? 1 : 0; 
+		return fs_int_a == fs_b->height ? 1 : 0; 
 	});
 
 	if( fs == nullptr ) {

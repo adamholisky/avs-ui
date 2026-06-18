@@ -59,7 +59,7 @@ uint16_t avs_draw_string( const char *s, uint16_t x, uint16_t y, uint32_t fg, ui
 	int current_x = x;
 	uint16_t pix_len = 0;
 	Font *f = ( font == NULL ? avs_get_main_font() : font );
-	font_size *fs = font->get_size(size);
+	font_size *fs = f->get_size(size);
 
 	for( int i = 0; i < len; i++ ) {
 		uint32_t char_num = *s;
@@ -165,4 +165,37 @@ uint16_t avs_draw_char_ttf_fsize( uint32_t char_num, uint16_t x, uint16_t y, uin
 	}
 
 	return bitm->advance;
+}
+
+uint16_t avs_string_ttf_get_box( char *s, AVS::Font *font, uint16_t size, uint16_t *box_w, uint16_t *box_h ) {
+	int len = avs_strlen(s);
+	uint16_t pix_len = 0;
+	Font *f = ( font == NULL ? avs_get_main_font() : font );
+	font_size *fs = f->get_size(size);
+	uint32_t char_num = *s;
+	font_ttf_bitmap *bitm = nullptr;
+
+	if( char_num < 256 ) {
+		bitm = &fs->bitmaps[char_num];
+	} else {
+		if( !f->get_glyph(char_num, size, bitm) ) {
+			// TODO: Output a ? character or something
+			printf( "failed to load bitmap for glyph %d\n", char_num );
+			return 0;
+		}
+	}
+
+	for( int i = 0; i < len; i++ ) {
+		char_num = s[i];
+		pix_len = pix_len + bitm->advance + 1;
+		
+		s++;
+	}
+
+	printf( "box_w=%d    box_h=%d\n", *box_w, *box_h );
+
+	*box_w = pix_len;
+	*box_h = fs->height;
+
+	return pix_len;
 }

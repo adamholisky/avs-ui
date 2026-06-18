@@ -27,7 +27,7 @@ CC := /usr/bin/gcc
 CPP := /usr/bin/g++
 LD := /usr/bin/ld
 DEFINES := -DAVS_ENV_LINUX
-CFLAGS := -pg -I$(HEADER_DIR) -I/usr/include/SDL2
+CFLAGS := -g -I$(HEADER_DIR) -I/usr/include/SDL2
 LDFLAGS := -lSDL2 -lm
 
 # Helpers

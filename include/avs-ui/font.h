@@ -25,7 +25,7 @@ namespace AVS {
     } font_ttf_bitmap;
 
     typedef struct {
-        uint16_t font_size;
+        uint16_t height;
         uint16_t bitmap_width;
         uint16_t bitmap_height; 
 
