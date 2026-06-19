@@ -19,6 +19,9 @@ namespace AVS {
 		bool is_hover;
 		bool is_visible;
 
+		uint16_t x_abs;
+		uint16_t y_abs;
+
 		/**
 		 * @brief X position, relative to container that holds the object
 		 * 

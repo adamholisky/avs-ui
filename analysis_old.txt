@@ -1,0 +1,766 @@
+Flat profile:
+
+Each sample counts as 0.01 seconds.
+  %   cumulative   self              self     total           
+ time   seconds   seconds    calls  ms/call  ms/call  name    
+ 17.78      0.08     0.08  2351664     0.00     0.00  draw_line
+ 15.56      0.15     0.07   106681     0.00     0.00  post_process
+ 11.11      0.20     0.05 11063694     0.00     0.00  getu32
+  6.67      0.23     0.03  5371400     0.00     0.00  fast_floor
+  6.67      0.26     0.03   119773     0.00     0.00  simple_points
+  4.44      0.28     0.02  4955572     0.00     0.00  fast_ceil
+  4.44      0.30     0.02   258788     0.00     0.00  decode_contour
+  4.44      0.32     0.02   107941     0.00     0.00  cmap_fmt12_13
+  4.44      0.34     0.02      420     0.05     1.00  AVS::Font::prime_cache(unsigned short)
+  2.22      0.35     0.01  9229344     0.00     0.00  is_safe_offset
+  2.22      0.36     0.01  1184508     0.00     0.00  is_flat
+  2.22      0.37     0.01   666935     0.00     0.00  midpoint
+  2.22      0.38     0.01   246086     0.00     0.00  outline_offset
+  2.22      0.39     0.01   119773     0.00     0.00  simple_flags
+  2.22      0.40     0.01   107941     0.00     0.00  glyph_id
+  2.22      0.41     0.01   107521     0.00     0.00  sft_render
+  2.22      0.42     0.01   106681     0.00     0.00  draw_lines
+  2.22      0.43     0.01        4     2.50     2.50  avs_draw_rect
+  2.22      0.44     0.01        1    10.00    10.00  avs_sdl_main_loop
+  2.22      0.45     0.01                             _init
+  0.00      0.45     0.00  6166538     0.00     0.00  getu8
+  0.00      0.45     0.00  4041852     0.00     0.00  getu16
+  0.00      0.45     0.00  1988773     0.00     0.00  geti16
+  0.00      0.45     0.00  1169772     0.00     0.00  tesselate_curve
+  0.00      0.45     0.00   709314     0.00     0.00  gettable
+  0.00      0.45     0.00   213782     0.00     0.00  glyph_bbox
+  0.00      0.45     0.00   137305     0.00     0.00  decode_outline
+  0.00      0.45     0.00   137305     0.00     0.00  transform_points
+  0.00      0.45     0.00   119773     0.00     0.00  simple_outline
+  0.00      0.45     0.00   107941     0.00     0.00  hor_metrics
+  0.00      0.45     0.00   107941     0.00     0.00  sft_gmetrics
+  0.00      0.45     0.00   107941     0.00     0.00  sft_lookup
+  0.00      0.45     0.00   106681     0.00     0.00  clip_points
+  0.00      0.45     0.00   106681     0.00     0.00  free_outline
+  0.00      0.45     0.00   106681     0.00     0.00  init_outline
+  0.00      0.45     0.00   106681     0.00     0.00  render_outline
+  0.00      0.45     0.00   106681     0.00     0.00  tesselate_curves
+  0.00      0.45     0.00    53952     0.00     0.00  geti8
+  0.00      0.45     0.00    17532     0.00     0.00  compound_outline
+  0.00      0.45     0.00    16863     0.00     0.00  sc_reallocarray
+  0.00      0.45     0.00    13977     0.00     0.00  grow_points
+  0.00      0.45     0.00     2886     0.00     0.00  grow_lines
+  0.00      0.45     0.00      421     0.00     0.00  AVS::List::find_data(void*, int (*)(void*, void*))
+  0.00      0.45     0.00      420     0.00     0.00  init_font
+  0.00      0.45     0.00      420     0.00     0.00  sft_lmetrics
+  0.00      0.45     0.00      420     0.00     0.00  sft_loadmem
+  0.00      0.45     0.00      418     0.00     1.00  AVS::Font::get_size(unsigned short, bool)
+  0.00      0.45     0.00      418     0.00     0.00  AVS::Font::get_size(unsigned short, bool)::{lambda(void*, void*)#1}::operator int (*)(void*, void*)() const
+  0.00      0.45     0.00      418     0.00     0.00  get_avs_platform
+  0.00      0.45     0.00      417     0.00     1.00  avs_draw_char_ttf
+  0.00      0.45     0.00        6     0.00     0.00  AVS::List::List()
+  0.00      0.45     0.00        6     0.00    69.50  avs_draw_string
+  0.00      0.45     0.00        4     0.00     0.00  avs_get_font::{lambda(void*, void*)#1}::operator()(void*, void*) const
+  0.00      0.45     0.00        4     0.00     0.00  avs_get_font::{lambda(void*, void*)#1}::_FUN(void*, void*)
+  0.00      0.45     0.00        3     0.00     0.00  AVS::Object::Object()
+  0.00      0.45     0.00        3     0.00     0.00  avs_get_font::{lambda(void*, void*)#1}::operator int (*)(void*, void*)() const
+  0.00      0.45     0.00        3     0.00     0.00  avs_get_font
+  0.00      0.45     0.00        2     0.00     1.00  AVS::Font::Font(char const*, char const*)
+  0.00      0.45     0.00        2     0.00     0.00  AVS::List::insert_after(AVS::Node*, void*)
+  0.00      0.45     0.00        2     0.00     0.00  AVS::List::insert_before(AVS::Node*, void*)
+  0.00      0.45     0.00        2     0.00     0.00  AVS::List::push(void*)
+  0.00      0.45     0.00        2     0.00     0.00  AVS::List::append(void*)
+  0.00      0.45     0.00        2     0.00     0.00  AVS::List::prepend(void*)
+  0.00      0.45     0.00        2     0.00     0.00  AVS::List::for_each(void (*)(void*))
+  0.00      0.45     0.00        2     0.00     0.00  AVS::Object::update_sizes()
+  0.00      0.45     0.00        2     0.00     0.00  AVS::Object::draw()
+  0.00      0.45     0.00        2     0.00     0.00  AVS::Object::add_child(AVS::Object*)
+  0.00      0.45     0.00        2     0.00   173.75  AVS::Object::draw()::{lambda(void*)#1}::operator()(void*) const
+  0.00      0.45     0.00        2     0.00     0.00  AVS::Object::draw()::{lambda(void*)#1}::operator void (*)(void*)() const
+  0.00      0.45     0.00        2     0.00     0.00  AVS::Object::draw()::{lambda(void*)#1}::_FUN(void*)
+  0.00      0.45     0.00        2     0.00     0.00  avs_platform_copy_b_to_f
+  0.00      0.45     0.00        2     0.00     0.00  avs_sdl_update_sdl_window
+  0.00      0.45     0.00        1     0.00     0.00  ReferenceApp::ReferenceApp()
+  0.00      0.45     0.00        1     0.00     0.00  AVS::App::output_diagnostic()
+  0.00      0.45     0.00        1     0.00    10.00  AVS::App::run()
+  0.00      0.45     0.00        1     0.00   428.00  AVS::App::draw()
+  0.00      0.45     0.00        1     0.00     0.00  AVS::App::get_name()
+  0.00      0.45     0.00        1     0.00     0.00  AVS::App::App(char const*)
+  0.00      0.45     0.00        1     0.00     1.00  AVS::Font::get_glyph(unsigned int, unsigned short, AVS::font_ttf_bitmap*)
+  0.00      0.45     0.00        1     0.00     0.00  AVS::Object::find_app()
+  0.00      0.45     0.00        1     0.00     0.00  AVS::Object::add_child(AVS::Object*, AVS::Object*)
+  0.00      0.45     0.00        1     0.00    78.00  AVS::Window::draw()
+  0.00      0.45     0.00        1     0.00     0.00  AVS::Window::get_title()
+  0.00      0.45     0.00        1     0.00     0.00  AVS::Window::set_title(char const*)
+  0.00      0.45     0.00        1     0.00     0.00  AVS::Window::Window(unsigned short, unsigned short, unsigned short, unsigned short)
+  0.00      0.45     0.00        1     0.00     0.00  AVS::Console::output_diagnostic()
+  0.00      0.45     0.00        1     0.00   347.50  AVS::Console::draw()
+  0.00      0.45     0.00        1     0.00     0.00  AVS::Console::Console(unsigned short, unsigned short, unsigned short, unsigned short, unsigned int, unsigned int)
+  0.00      0.45     0.00        1     0.00     0.00  avs_platform_init
+  0.00      0.45     0.00        1     0.00     0.00  avs_platform_init_linux
+  0.00      0.45     0.00        1     0.00     0.00  avs_render_ttf_bitmap
+  0.00      0.45     0.00        1     0.00     0.00  avs_sdl_init
+  0.00      0.45     0.00        1     0.00     2.00  initalize_fonts
+
+ %         the percentage of the total running time of the
+time       program used by this function.
+
+cumulative a running sum of the number of seconds accounted
+ seconds   for by this function and those listed above it.
+
+ self      the number of seconds accounted for by this
+seconds    function alone.  This is the major sort for this
+           listing.
+
+calls      the number of times this function was invoked, if
+           this function is profiled, else blank.
+
+ self      the average number of milliseconds spent in this
+ms/call    function per call, if this function is profiled,
+	   else blank.
+
+ total     the average number of milliseconds spent in this
+ms/call    function and its descendents per call, if this
+	   function is profiled, else blank.
+
+name       the name of the function.  This is the minor sort
+           for this listing. The index shows the location of
+	   the function in the gprof listing. If the index is
+	   in parenthesis it shows where it would appear in
+	   the gprof listing if it were to be printed.
+
+Copyright (C) 2012-2025 Free Software Foundation, Inc.
+
+Copying and distribution of this file, with or without modification,
+are permitted in any medium without royalty provided the copyright
+notice and this notice are preserved.
+
+		     Call graph (explanation follows)
+
+
+granularity: each sample hit covers 4 byte(s) for 2.22% of 0.45 seconds
+
+index % time    self  children    called     name
+                                                 <spontaneous>
+[1]     97.8    0.00    0.44                 main [1]
+                0.00    0.43       1/1           AVS::App::draw() [2]
+                0.00    0.01       1/1           AVS::App::run() [35]
+                0.00    0.00       1/1           initalize_fonts [40]
+                0.00    0.00       1/1           avs_platform_init [64]
+                0.00    0.00       1/1           ReferenceApp::ReferenceApp() [104]
+                0.00    0.00       1/1           AVS::App::output_diagnostic() [105]
+-----------------------------------------------
+                0.00    0.43       1/1           main [1]
+[2]     95.1    0.00    0.43       1         AVS::App::draw() [2]
+                0.00    0.43       1/1           AVS::Object::draw() <cycle 2> [100]
+                0.00    0.00       1/4           avs_draw_rect [33]
+                0.00    0.00       2/2           avs_platform_copy_b_to_f [62]
+-----------------------------------------------
+[3]     94.6    0.00    0.43       1+8       <cycle 2 as a whole> [3]
+                0.00    0.35       2             AVS::Object::draw()::{lambda(void*)#1}::operator()(void*) const <cycle 2> [8]
+                0.00    0.08       1             AVS::Window::draw() <cycle 2> [15]
+                0.00    0.00       2             AVS::Object::draw() <cycle 2> [100]
+                0.00    0.00       2             AVS::List::for_each(void (*)(void*)) <cycle 2> [98]
+                0.00    0.00       2             AVS::Object::draw()::{lambda(void*)#1}::_FUN(void*) <cycle 2> [103]
+-----------------------------------------------
+                0.00    0.00       2/420         AVS::Font::Font(char const*, char const*) [41]
+                0.02    0.40     418/420         AVS::Font::get_size(unsigned short, bool) [5]
+[4]     93.3    0.02    0.40     420         AVS::Font::prime_cache(unsigned short) [4]
+                0.01    0.31  107520/107521      sft_render [10]
+                0.00    0.08  107940/107941      sft_lookup [19]
+                0.00    0.01  107940/107941      sft_gmetrics [38]
+                0.00    0.00     420/420         sft_loadmem [47]
+                0.00    0.00     420/420         sft_lmetrics [48]
+-----------------------------------------------
+                0.00    0.00       1/418         AVS::Font::get_glyph(unsigned int, unsigned short, AVS::font_ttf_bitmap*) [43]
+                0.00    0.42     417/418         avs_draw_char_ttf [6]
+[5]     92.9    0.00    0.42     418         AVS::Font::get_size(unsigned short, bool) [5]
+                0.02    0.40     418/420         AVS::Font::prime_cache(unsigned short) [4]
+                0.00    0.00     418/418         AVS::Font::get_size(unsigned short, bool)::{lambda(void*, void*)#1}::operator int (*)(void*, void*)() const [87]
+                0.00    0.00     418/421         AVS::List::find_data(void*, int (*)(void*, void*)) [86]
+-----------------------------------------------
+                0.00    0.42     417/417         avs_draw_string [7]
+[6]     92.7    0.00    0.42     417         avs_draw_char_ttf [6]
+                0.00    0.42     417/418         AVS::Font::get_size(unsigned short, bool) [5]
+                0.00    0.00     417/418         get_avs_platform [60]
+-----------------------------------------------
+                0.00    0.07       1/6           AVS::Window::draw() <cycle 2> [15]
+                0.00    0.35       5/6           AVS::Console::draw() [9]
+[7]     92.7    0.00    0.42       6         avs_draw_string [7]
+                0.00    0.42     417/417         avs_draw_char_ttf [6]
+-----------------------------------------------
+                                   2             AVS::Object::draw()::{lambda(void*)#1}::_FUN(void*) <cycle 2> [103]
+[8]     77.2    0.00    0.35       2         AVS::Object::draw()::{lambda(void*)#1}::operator()(void*) const <cycle 2> [8]
+                0.00    0.35       1/1           AVS::Console::draw() [9]
+                                   1             AVS::Window::draw() <cycle 2> [15]
+-----------------------------------------------
+                0.00    0.35       1/1           AVS::Object::draw()::{lambda(void*)#1}::operator()(void*) const <cycle 2> [8]
+[9]     77.2    0.00    0.35       1         AVS::Console::draw() [9]
+                0.00    0.35       5/6           avs_draw_string [7]
+                0.00    0.00       1/1           AVS::Console::output_diagnostic() [113]
+-----------------------------------------------
+                0.00    0.00       1/107521      AVS::Font::get_glyph(unsigned int, unsigned short, AVS::font_ttf_bitmap*) [43]
+                0.01    0.31  107520/107521      AVS::Font::prime_cache(unsigned short) [4]
+[10]    70.4    0.01    0.31  107521         sft_render [10]
+                0.00    0.22  106681/106681      render_outline [11]
+                0.00    0.08  106681/106681      decode_outline <cycle 1> [16]
+                0.00    0.00  107521/246086      outline_offset [27]
+                0.00    0.00  106681/213782      glyph_bbox [45]
+                0.00    0.00  106681/106681      init_outline [55]
+                0.00    0.00  106681/106681      free_outline [54]
+-----------------------------------------------
+                0.00    0.22  106681/106681      sft_render [10]
+[11]    49.0    0.00    0.22  106681         render_outline [11]
+                0.01    0.13  106681/106681      draw_lines [12]
+                0.07    0.00  106681/106681      post_process [20]
+                0.00    0.01  106681/106681      tesselate_curves [30]
+                0.00    0.00  106681/137305      transform_points [52]
+                0.00    0.00  106681/106681      clip_points [53]
+-----------------------------------------------
+                0.01    0.13  106681/106681      render_outline [11]
+[12]    31.1    0.01    0.13  106681         draw_lines [12]
+                0.08    0.05 2351664/2351664     draw_line [13]
+-----------------------------------------------
+                0.08    0.05 2351664/2351664     draw_lines [12]
+[13]    28.9    0.08    0.05 2351664         draw_line [13]
+                0.03    0.00 5371400/5371400     fast_floor [24]
+                0.02    0.00 4955572/4955572     fast_ceil [26]
+-----------------------------------------------
+[14]    17.7    0.00    0.08  106681+48156   <cycle 1 as a whole> [14]
+                0.00    0.08  137305             decode_outline <cycle 1> [16]
+                0.00    0.00   17532             compound_outline <cycle 1> [42]
+-----------------------------------------------
+                                   1             AVS::Object::draw()::{lambda(void*)#1}::operator()(void*) const <cycle 2> [8]
+[15]    17.3    0.00    0.08       1         AVS::Window::draw() <cycle 2> [15]
+                0.00    0.07       1/6           avs_draw_string [7]
+                0.01    0.00       3/4           avs_draw_rect [33]
+                0.00    0.00       1/1           AVS::Font::get_glyph(unsigned int, unsigned short, AVS::font_ttf_bitmap*) [43]
+                0.00    0.00       2/3           avs_get_font [61]
+                0.00    0.00       1/1           AVS::Object::find_app() [108]
+                0.00    0.00       1/1           AVS::Window::get_title() [110]
+                0.00    0.00       1/1           avs_render_ttf_bitmap [66]
+                                   1             AVS::Object::draw() <cycle 2> [100]
+-----------------------------------------------
+                               30624             compound_outline <cycle 1> [42]
+                0.00    0.08  106681/106681      sft_render [10]
+[16]    17.2    0.00    0.08  137305         decode_outline <cycle 1> [16]
+                0.00    0.08  119773/119773      simple_outline [17]
+                0.00    0.00  137305/9229344     is_safe_offset [37]
+                0.00    0.00  137305/1988773     geti16 [51]
+                               17532             compound_outline <cycle 1> [42]
+-----------------------------------------------
+                0.00    0.08  119773/119773      decode_outline <cycle 1> [16]
+[17]    17.2    0.00    0.08  119773         simple_outline [17]
+                0.03    0.00  119773/119773      simple_points [23]
+                0.02    0.01  258788/258788      decode_contour [25]
+                0.01    0.00  119773/119773      simple_flags [28]
+                0.00    0.00  119773/9229344     is_safe_offset [37]
+                0.00    0.00  498334/4041852     getu16 [50]
+                0.00    0.00    6156/13977       grow_points [58]
+-----------------------------------------------
+                0.01    0.07  107941/107941      sft_lookup [19]
+[18]    16.8    0.01    0.07  107941         glyph_id [18]
+                0.02    0.04  107941/107941      cmap_fmt12_13 [21]
+                0.00    0.00  107941/709314      gettable [39]
+                0.00    0.00  107941/11063694     getu32 [22]
+                0.00    0.00  323823/9229344     is_safe_offset [37]
+                0.00    0.00  675402/4041852     getu16 [50]
+-----------------------------------------------
+                0.00    0.00       1/107941      AVS::Font::get_glyph(unsigned int, unsigned short, AVS::font_ttf_bitmap*) [43]
+                0.00    0.08  107940/107941      AVS::Font::prime_cache(unsigned short) [4]
+[19]    16.8    0.00    0.08  107941         sft_lookup [19]
+                0.01    0.07  107941/107941      glyph_id [18]
+-----------------------------------------------
+                0.07    0.00  106681/106681      render_outline [11]
+[20]    15.6    0.07    0.00  106681         post_process [20]
+-----------------------------------------------
+                0.02    0.04  107941/107941      glyph_id [18]
+[21]    14.3    0.02    0.04  107941         cmap_fmt12_13 [21]
+                0.04    0.00 9753847/11063694     getu32 [22]
+                0.00    0.00  215882/9229344     is_safe_offset [37]
+-----------------------------------------------
+                0.00    0.00     420/11063694     init_font [46]
+                0.00    0.00  107941/11063694     glyph_id [18]
+                0.00    0.00  492172/11063694     outline_offset [27]
+                0.00    0.00  709314/11063694     gettable [39]
+                0.04    0.00 9753847/11063694     cmap_fmt12_13 [21]
+[22]    11.1    0.05    0.00 11063694         getu32 [22]
+-----------------------------------------------
+                0.03    0.00  119773/119773      simple_outline [17]
+[23]     7.7    0.03    0.00  119773         simple_points [23]
+                0.00    0.00 4164472/9229344     is_safe_offset [37]
+                0.00    0.00 3285049/6166538     getu8 [49]
+                0.00    0.00  879423/1988773     geti16 [51]
+-----------------------------------------------
+                0.03    0.00 5371400/5371400     draw_line [13]
+[24]     6.7    0.03    0.00 5371400         fast_floor [24]
+-----------------------------------------------
+                0.02    0.01  258788/258788      simple_outline [17]
+[25]     6.6    0.02    0.01  258788         decode_contour [25]
+                0.01    0.00  644831/666935      midpoint [32]
+                0.00    0.00    7746/13977       grow_points [58]
+                0.00    0.00    2868/2886        grow_lines [59]
+-----------------------------------------------
+                0.02    0.00 4955572/4955572     draw_line [13]
+[26]     4.4    0.02    0.00 4955572         fast_ceil [26]
+-----------------------------------------------
+                0.00    0.00   30624/246086      compound_outline <cycle 1> [42]
+                0.00    0.00  107521/246086      sft_render [10]
+                0.00    0.00  107941/246086      sft_gmetrics [38]
+[27]     3.4    0.01    0.01  246086         outline_offset [27]
+                0.00    0.00  492172/709314      gettable [39]
+                0.00    0.00  492172/11063694     getu32 [22]
+                0.00    0.00  246086/9229344     is_safe_offset [37]
+-----------------------------------------------
+                0.01    0.00  119773/119773      simple_outline [17]
+[28]     2.9    0.01    0.00  119773         simple_flags [28]
+                0.00    0.00 2827537/9229344     is_safe_offset [37]
+                0.00    0.00 2827537/6166538     getu8 [49]
+-----------------------------------------------
+                0.00    0.01 1169772/1169772     tesselate_curves [30]
+[29]     2.3    0.00    0.01 1169772         tesselate_curve [29]
+                0.01    0.00 1184508/1184508     is_flat [31]
+                0.00    0.00   22104/666935      midpoint [32]
+                0.00    0.00      75/13977       grow_points [58]
+                0.00    0.00      18/2886        grow_lines [59]
+-----------------------------------------------
+                0.00    0.01  106681/106681      render_outline [11]
+[30]     2.3    0.00    0.01  106681         tesselate_curves [30]
+                0.00    0.01 1169772/1169772     tesselate_curve [29]
+-----------------------------------------------
+                0.01    0.00 1184508/1184508     tesselate_curve [29]
+[31]     2.2    0.01    0.00 1184508         is_flat [31]
+-----------------------------------------------
+                0.00    0.00   22104/666935      tesselate_curve [29]
+                0.01    0.00  644831/666935      decode_contour [25]
+[32]     2.2    0.01    0.00  666935         midpoint [32]
+-----------------------------------------------
+                0.00    0.00       1/4           AVS::App::draw() [2]
+                0.01    0.00       3/4           AVS::Window::draw() <cycle 2> [15]
+[33]     2.2    0.01    0.00       4         avs_draw_rect [33]
+-----------------------------------------------
+                0.01    0.00       1/1           AVS::App::run() [35]
+[34]     2.2    0.01    0.00       1         avs_sdl_main_loop [34]
+-----------------------------------------------
+                0.00    0.01       1/1           main [1]
+[35]     2.2    0.00    0.01       1         AVS::App::run() [35]
+                0.01    0.00       1/1           avs_sdl_main_loop [34]
+-----------------------------------------------
+                                                 <spontaneous>
+[36]     2.2    0.01    0.00                 _init [36]
+-----------------------------------------------
+                0.00    0.00     420/9229344     sft_lmetrics [48]
+                0.00    0.00    1260/9229344     init_font [46]
+                0.00    0.00   61248/9229344     compound_outline <cycle 1> [42]
+                0.00    0.00  119773/9229344     simple_outline [17]
+                0.00    0.00  137305/9229344     decode_outline <cycle 1> [16]
+                0.00    0.00  208442/9229344     hor_metrics [44]
+                0.00    0.00  213782/9229344     glyph_bbox [45]
+                0.00    0.00  215882/9229344     cmap_fmt12_13 [21]
+                0.00    0.00  246086/9229344     outline_offset [27]
+                0.00    0.00  323823/9229344     glyph_id [18]
+                0.00    0.00  709314/9229344     gettable [39]
+                0.00    0.00 2827537/9229344     simple_flags [28]
+                0.00    0.00 4164472/9229344     simple_points [23]
+[37]     2.2    0.01    0.00 9229344         is_safe_offset [37]
+-----------------------------------------------
+                0.00    0.00       1/107941      AVS::Font::get_glyph(unsigned int, unsigned short, AVS::font_ttf_bitmap*) [43]
+                0.00    0.01  107940/107941      AVS::Font::prime_cache(unsigned short) [4]
+[38]     1.7    0.00    0.01  107941         sft_gmetrics [38]
+                0.00    0.00  107941/246086      outline_offset [27]
+                0.00    0.00  107941/107941      hor_metrics [44]
+                0.00    0.00  107101/213782      glyph_bbox [45]
+-----------------------------------------------
+                0.00    0.00     420/709314      sft_lmetrics [48]
+                0.00    0.00     840/709314      init_font [46]
+                0.00    0.00  107941/709314      glyph_id [18]
+                0.00    0.00  107941/709314      hor_metrics [44]
+                0.00    0.00  492172/709314      outline_offset [27]
+[39]     0.9    0.00    0.00  709314         gettable [39]
+                0.00    0.00  709314/11063694     getu32 [22]
+                0.00    0.00  709314/9229344     is_safe_offset [37]
+                0.00    0.00  709314/4041852     getu16 [50]
+-----------------------------------------------
+                0.00    0.00       1/1           main [1]
+[40]     0.4    0.00    0.00       1         initalize_fonts [40]
+                0.00    0.00       2/2           AVS::Font::Font(char const*, char const*) [41]
+                0.00    0.00       2/2           AVS::List::append(void*) [96]
+                0.00    0.00       1/6           AVS::List::List() [88]
+-----------------------------------------------
+                0.00    0.00       2/2           initalize_fonts [40]
+[41]     0.4    0.00    0.00       2         AVS::Font::Font(char const*, char const*) [41]
+                0.00    0.00       2/420         AVS::Font::prime_cache(unsigned short) [4]
+                0.00    0.00       2/6           AVS::List::List() [88]
+-----------------------------------------------
+                               17532             decode_outline <cycle 1> [16]
+[42]     0.4    0.00    0.00   17532         compound_outline <cycle 1> [42]
+                0.00    0.00   30624/246086      outline_offset [27]
+                0.00    0.00   61248/9229344     is_safe_offset [37]
+                0.00    0.00   61248/4041852     getu16 [50]
+                0.00    0.00   53952/53952       geti8 [56]
+                0.00    0.00   30624/137305      transform_points [52]
+                0.00    0.00    7296/1988773     geti16 [51]
+                               30624             decode_outline <cycle 1> [16]
+-----------------------------------------------
+                0.00    0.00       1/1           AVS::Window::draw() <cycle 2> [15]
+[43]     0.2    0.00    0.00       1         AVS::Font::get_glyph(unsigned int, unsigned short, AVS::font_ttf_bitmap*) [43]
+                0.00    0.00       1/418         AVS::Font::get_size(unsigned short, bool) [5]
+                0.00    0.00       1/107521      sft_render [10]
+                0.00    0.00       1/107941      sft_lookup [19]
+                0.00    0.00       1/107941      sft_gmetrics [38]
+-----------------------------------------------
+                0.00    0.00  107941/107941      sft_gmetrics [38]
+[44]     0.2    0.00    0.00  107941         hor_metrics [44]
+                0.00    0.00  107941/709314      gettable [39]
+                0.00    0.00  208442/9229344     is_safe_offset [37]
+                0.00    0.00  107941/4041852     getu16 [50]
+                0.00    0.00  107941/1988773     geti16 [51]
+-----------------------------------------------
+                0.00    0.00  106681/213782      sft_render [10]
+                0.00    0.00  107101/213782      sft_gmetrics [38]
+[45]     0.1    0.00    0.00  213782         glyph_bbox [45]
+                0.00    0.00  213782/9229344     is_safe_offset [37]
+                0.00    0.00  855128/1988773     geti16 [51]
+-----------------------------------------------
+                0.00    0.00     420/420         sft_loadmem [47]
+[46]     0.0    0.00    0.00     420         init_font [46]
+                0.00    0.00     840/709314      gettable [39]
+                0.00    0.00     420/11063694     getu32 [22]
+                0.00    0.00    1260/9229344     is_safe_offset [37]
+                0.00    0.00     840/4041852     getu16 [50]
+                0.00    0.00     420/1988773     geti16 [51]
+-----------------------------------------------
+                0.00    0.00     420/420         AVS::Font::prime_cache(unsigned short) [4]
+[47]     0.0    0.00    0.00     420         sft_loadmem [47]
+                0.00    0.00     420/420         init_font [46]
+-----------------------------------------------
+                0.00    0.00     420/420         AVS::Font::prime_cache(unsigned short) [4]
+[48]     0.0    0.00    0.00     420         sft_lmetrics [48]
+                0.00    0.00     420/709314      gettable [39]
+                0.00    0.00     420/9229344     is_safe_offset [37]
+                0.00    0.00    1260/1988773     geti16 [51]
+-----------------------------------------------
+                0.00    0.00   53952/6166538     geti8 [56]
+                0.00    0.00 2827537/6166538     simple_flags [28]
+                0.00    0.00 3285049/6166538     simple_points [23]
+[49]     0.0    0.00    0.00 6166538         getu8 [49]
+-----------------------------------------------
+                0.00    0.00     840/4041852     init_font [46]
+                0.00    0.00   61248/4041852     compound_outline <cycle 1> [42]
+                0.00    0.00  107941/4041852     hor_metrics [44]
+                0.00    0.00  498334/4041852     simple_outline [17]
+                0.00    0.00  675402/4041852     glyph_id [18]
+                0.00    0.00  709314/4041852     gettable [39]
+                0.00    0.00 1988773/4041852     geti16 [51]
+[50]     0.0    0.00    0.00 4041852         getu16 [50]
+-----------------------------------------------
+                0.00    0.00     420/1988773     init_font [46]
+                0.00    0.00    1260/1988773     sft_lmetrics [48]
+                0.00    0.00    7296/1988773     compound_outline <cycle 1> [42]
+                0.00    0.00  107941/1988773     hor_metrics [44]
+                0.00    0.00  137305/1988773     decode_outline <cycle 1> [16]
+                0.00    0.00  855128/1988773     glyph_bbox [45]
+                0.00    0.00  879423/1988773     simple_points [23]
+[51]     0.0    0.00    0.00 1988773         geti16 [51]
+                0.00    0.00 1988773/4041852     getu16 [50]
+-----------------------------------------------
+                0.00    0.00   30624/137305      compound_outline <cycle 1> [42]
+                0.00    0.00  106681/137305      render_outline [11]
+[52]     0.0    0.00    0.00  137305         transform_points [52]
+-----------------------------------------------
+                0.00    0.00  106681/106681      render_outline [11]
+[53]     0.0    0.00    0.00  106681         clip_points [53]
+-----------------------------------------------
+                0.00    0.00  106681/106681      sft_render [10]
+[54]     0.0    0.00    0.00  106681         free_outline [54]
+-----------------------------------------------
+                0.00    0.00  106681/106681      sft_render [10]
+[55]     0.0    0.00    0.00  106681         init_outline [55]
+-----------------------------------------------
+                0.00    0.00   53952/53952       compound_outline <cycle 1> [42]
+[56]     0.0    0.00    0.00   53952         geti8 [56]
+                0.00    0.00   53952/6166538     getu8 [49]
+-----------------------------------------------
+                0.00    0.00    2886/16863       grow_lines [59]
+                0.00    0.00   13977/16863       grow_points [58]
+[57]     0.0    0.00    0.00   16863         sc_reallocarray [57]
+-----------------------------------------------
+                0.00    0.00      75/13977       tesselate_curve [29]
+                0.00    0.00    6156/13977       simple_outline [17]
+                0.00    0.00    7746/13977       decode_contour [25]
+[58]     0.0    0.00    0.00   13977         grow_points [58]
+                0.00    0.00   13977/16863       sc_reallocarray [57]
+-----------------------------------------------
+                0.00    0.00      18/2886        tesselate_curve [29]
+                0.00    0.00    2868/2886        decode_contour [25]
+[59]     0.0    0.00    0.00    2886         grow_lines [59]
+                0.00    0.00    2886/16863       sc_reallocarray [57]
+-----------------------------------------------
+                0.00    0.00       1/418         avs_render_ttf_bitmap [66]
+                0.00    0.00     417/418         avs_draw_char_ttf [6]
+[60]     0.0    0.00    0.00     418         get_avs_platform [60]
+-----------------------------------------------
+                0.00    0.00       1/3           AVS::Console::Console(unsigned short, unsigned short, unsigned short, unsigned short, unsigned int, unsigned int) [114]
+                0.00    0.00       2/3           AVS::Window::draw() <cycle 2> [15]
+[61]     0.0    0.00    0.00       3         avs_get_font [61]
+                0.00    0.00       3/3           avs_get_font::{lambda(void*, void*)#1}::operator int (*)(void*, void*)() const [92]
+                0.00    0.00       3/421         AVS::List::find_data(void*, int (*)(void*, void*)) [86]
+-----------------------------------------------
+                0.00    0.00       2/2           AVS::App::draw() [2]
+[62]     0.0    0.00    0.00       2         avs_platform_copy_b_to_f [62]
+                0.00    0.00       2/2           avs_sdl_update_sdl_window [63]
+-----------------------------------------------
+                0.00    0.00       2/2           avs_platform_copy_b_to_f [62]
+[63]     0.0    0.00    0.00       2         avs_sdl_update_sdl_window [63]
+-----------------------------------------------
+                0.00    0.00       1/1           main [1]
+[64]     0.0    0.00    0.00       1         avs_platform_init [64]
+                0.00    0.00       1/1           avs_platform_init_linux [65]
+-----------------------------------------------
+                0.00    0.00       1/1           avs_platform_init [64]
+[65]     0.0    0.00    0.00       1         avs_platform_init_linux [65]
+                0.00    0.00       1/1           avs_sdl_init [67]
+-----------------------------------------------
+                0.00    0.00       1/1           AVS::Window::draw() <cycle 2> [15]
+[66]     0.0    0.00    0.00       1         avs_render_ttf_bitmap [66]
+                0.00    0.00       1/418         get_avs_platform [60]
+-----------------------------------------------
+                0.00    0.00       1/1           avs_platform_init_linux [65]
+[67]     0.0    0.00    0.00       1         avs_sdl_init [67]
+-----------------------------------------------
+                0.00    0.00       3/421         avs_get_font [61]
+                0.00    0.00     418/421         AVS::Font::get_size(unsigned short, bool) [5]
+[86]     0.0    0.00    0.00     421         AVS::List::find_data(void*, int (*)(void*, void*)) [86]
+                0.00    0.00       4/4           avs_get_font::{lambda(void*, void*)#1}::_FUN(void*, void*) [90]
+-----------------------------------------------
+                0.00    0.00     418/418         AVS::Font::get_size(unsigned short, bool) [5]
+[87]     0.0    0.00    0.00     418         AVS::Font::get_size(unsigned short, bool)::{lambda(void*, void*)#1}::operator int (*)(void*, void*)() const [87]
+-----------------------------------------------
+                0.00    0.00       1/6           initalize_fonts [40]
+                0.00    0.00       2/6           AVS::Font::Font(char const*, char const*) [41]
+                0.00    0.00       3/6           AVS::Object::Object() [91]
+[88]     0.0    0.00    0.00       6         AVS::List::List() [88]
+-----------------------------------------------
+                0.00    0.00       4/4           avs_get_font::{lambda(void*, void*)#1}::_FUN(void*, void*) [90]
+[89]     0.0    0.00    0.00       4         avs_get_font::{lambda(void*, void*)#1}::operator()(void*, void*) const [89]
+-----------------------------------------------
+                0.00    0.00       4/4           AVS::List::find_data(void*, int (*)(void*, void*)) [86]
+[90]     0.0    0.00    0.00       4         avs_get_font::{lambda(void*, void*)#1}::_FUN(void*, void*) [90]
+                0.00    0.00       4/4           avs_get_font::{lambda(void*, void*)#1}::operator()(void*, void*) const [89]
+-----------------------------------------------
+                0.00    0.00       1/3           AVS::App::App(char const*) [107]
+                0.00    0.00       1/3           AVS::Console::Console(unsigned short, unsigned short, unsigned short, unsigned short, unsigned int, unsigned int) [114]
+                0.00    0.00       1/3           AVS::Window::Window(unsigned short, unsigned short, unsigned short, unsigned short) [112]
+[91]     0.0    0.00    0.00       3         AVS::Object::Object() [91]
+                0.00    0.00       3/6           AVS::List::List() [88]
+-----------------------------------------------
+                0.00    0.00       3/3           avs_get_font [61]
+[92]     0.0    0.00    0.00       3         avs_get_font::{lambda(void*, void*)#1}::operator int (*)(void*, void*)() const [92]
+-----------------------------------------------
+                0.00    0.00       2/2           AVS::List::append(void*) [96]
+[93]     0.0    0.00    0.00       2         AVS::List::insert_after(AVS::Node*, void*) [93]
+-----------------------------------------------
+                0.00    0.00       2/2           AVS::List::prepend(void*) [97]
+[94]     0.0    0.00    0.00       2         AVS::List::insert_before(AVS::Node*, void*) [94]
+-----------------------------------------------
+                0.00    0.00       2/2           AVS::Object::add_child(AVS::Object*) [101]
+[95]     0.0    0.00    0.00       2         AVS::List::push(void*) [95]
+                0.00    0.00       2/2           AVS::List::prepend(void*) [97]
+-----------------------------------------------
+                0.00    0.00       2/2           initalize_fonts [40]
+[96]     0.0    0.00    0.00       2         AVS::List::append(void*) [96]
+                0.00    0.00       2/2           AVS::List::insert_after(AVS::Node*, void*) [93]
+-----------------------------------------------
+                0.00    0.00       2/2           AVS::List::push(void*) [95]
+[97]     0.0    0.00    0.00       2         AVS::List::prepend(void*) [97]
+                0.00    0.00       2/2           AVS::List::insert_before(AVS::Node*, void*) [94]
+-----------------------------------------------
+                                   2             AVS::Object::draw() <cycle 2> [100]
+[98]     0.0    0.00    0.00       2         AVS::List::for_each(void (*)(void*)) <cycle 2> [98]
+                                   2             AVS::Object::draw()::{lambda(void*)#1}::_FUN(void*) <cycle 2> [103]
+-----------------------------------------------
+                0.00    0.00       2/2           AVS::Object::add_child(AVS::Object*) [101]
+[99]     0.0    0.00    0.00       2         AVS::Object::update_sizes() [99]
+-----------------------------------------------
+                                   1             AVS::Window::draw() <cycle 2> [15]
+                0.00    0.43       1/1           AVS::App::draw() [2]
+[100]    0.0    0.00    0.00       2         AVS::Object::draw() <cycle 2> [100]
+                0.00    0.00       2/2           AVS::Object::draw()::{lambda(void*)#1}::operator void (*)(void*)() const [102]
+                                   2             AVS::List::for_each(void (*)(void*)) <cycle 2> [98]
+-----------------------------------------------
+                0.00    0.00       1/2           AVS::Object::add_child(AVS::Object*, AVS::Object*) [109]
+                0.00    0.00       1/2           ReferenceApp::ReferenceApp() [104]
+[101]    0.0    0.00    0.00       2         AVS::Object::add_child(AVS::Object*) [101]
+                0.00    0.00       2/2           AVS::List::push(void*) [95]
+                0.00    0.00       2/2           AVS::Object::update_sizes() [99]
+-----------------------------------------------
+                0.00    0.00       2/2           AVS::Object::draw() <cycle 2> [100]
+[102]    0.0    0.00    0.00       2         AVS::Object::draw()::{lambda(void*)#1}::operator void (*)(void*)() const [102]
+-----------------------------------------------
+                                   2             AVS::List::for_each(void (*)(void*)) <cycle 2> [98]
+[103]    0.0    0.00    0.00       2         AVS::Object::draw()::{lambda(void*)#1}::_FUN(void*) <cycle 2> [103]
+                                   2             AVS::Object::draw()::{lambda(void*)#1}::operator()(void*) const <cycle 2> [8]
+-----------------------------------------------
+                0.00    0.00       1/1           main [1]
+[104]    0.0    0.00    0.00       1         ReferenceApp::ReferenceApp() [104]
+                0.00    0.00       1/1           AVS::App::App(char const*) [107]
+                0.00    0.00       1/1           AVS::Window::Window(unsigned short, unsigned short, unsigned short, unsigned short) [112]
+                0.00    0.00       1/1           AVS::Window::set_title(char const*) [111]
+                0.00    0.00       1/1           AVS::App::get_name() [106]
+                0.00    0.00       1/1           AVS::Console::Console(unsigned short, unsigned short, unsigned short, unsigned short, unsigned int, unsigned int) [114]
+                0.00    0.00       1/2           AVS::Object::add_child(AVS::Object*) [101]
+                0.00    0.00       1/1           AVS::Object::add_child(AVS::Object*, AVS::Object*) [109]
+-----------------------------------------------
+                0.00    0.00       1/1           main [1]
+[105]    0.0    0.00    0.00       1         AVS::App::output_diagnostic() [105]
+-----------------------------------------------
+                0.00    0.00       1/1           ReferenceApp::ReferenceApp() [104]
+[106]    0.0    0.00    0.00       1         AVS::App::get_name() [106]
+-----------------------------------------------
+                0.00    0.00       1/1           ReferenceApp::ReferenceApp() [104]
+[107]    0.0    0.00    0.00       1         AVS::App::App(char const*) [107]
+                0.00    0.00       1/3           AVS::Object::Object() [91]
+-----------------------------------------------
+                0.00    0.00       1/1           AVS::Window::draw() <cycle 2> [15]
+[108]    0.0    0.00    0.00       1         AVS::Object::find_app() [108]
+-----------------------------------------------
+                0.00    0.00       1/1           ReferenceApp::ReferenceApp() [104]
+[109]    0.0    0.00    0.00       1         AVS::Object::add_child(AVS::Object*, AVS::Object*) [109]
+                0.00    0.00       1/2           AVS::Object::add_child(AVS::Object*) [101]
+-----------------------------------------------
+                0.00    0.00       1/1           AVS::Window::draw() <cycle 2> [15]
+[110]    0.0    0.00    0.00       1         AVS::Window::get_title() [110]
+-----------------------------------------------
+                0.00    0.00       1/1           ReferenceApp::ReferenceApp() [104]
+[111]    0.0    0.00    0.00       1         AVS::Window::set_title(char const*) [111]
+-----------------------------------------------
+                0.00    0.00       1/1           ReferenceApp::ReferenceApp() [104]
+[112]    0.0    0.00    0.00       1         AVS::Window::Window(unsigned short, unsigned short, unsigned short, unsigned short) [112]
+                0.00    0.00       1/3           AVS::Object::Object() [91]
+-----------------------------------------------
+                0.00    0.00       1/1           AVS::Console::draw() [9]
+[113]    0.0    0.00    0.00       1         AVS::Console::output_diagnostic() [113]
+-----------------------------------------------
+                0.00    0.00       1/1           ReferenceApp::ReferenceApp() [104]
+[114]    0.0    0.00    0.00       1         AVS::Console::Console(unsigned short, unsigned short, unsigned short, unsigned short, unsigned int, unsigned int) [114]
+                0.00    0.00       1/3           AVS::Object::Object() [91]
+                0.00    0.00       1/3           avs_get_font [61]
+-----------------------------------------------
+
+ This table describes the call tree of the program, and was sorted by
+ the total amount of time spent in each function and its children.
+
+ Each entry in this table consists of several lines.  The line with the
+ index number at the left hand margin lists the current function.
+ The lines above it list the functions that called this function,
+ and the lines below it list the functions this one called.
+ This line lists:
+     index	A unique number given to each element of the table.
+		Index numbers are sorted numerically.
+		The index number is printed next to every function name so
+		it is easier to look up where the function is in the table.
+
+     % time	This is the percentage of the `total' time that was spent
+		in this function and its children.  Note that due to
+		different viewpoints, functions excluded by options, etc,
+		these numbers will NOT add up to 100%.
+
+     self	This is the total amount of time spent in this function.
+
+     children	This is the total amount of time propagated into this
+		function by its children.
+
+     called	This is the number of times the function was called.
+		If the function called itself recursively, the number
+		only includes non-recursive calls, and is followed by
+		a `+' and the number of recursive calls.
+
+     name	The name of the current function.  The index number is
+		printed after it.  If the function is a member of a
+		cycle, the cycle number is printed between the
+		function's name and the index number.
+
+
+ For the function's parents, the fields have the following meanings:
+
+     self	This is the amount of time that was propagated directly
+		from the function into this parent.
+
+     children	This is the amount of time that was propagated from
+		the function's children into this parent.
+
+     called	This is the number of times this parent called the
+		function `/' the total number of times the function
+		was called.  Recursive calls to the function are not
+		included in the number after the `/'.
+
+     name	This is the name of the parent.  The parent's index
+		number is printed after it.  If the parent is a
+		member of a cycle, the cycle number is printed between
+		the name and the index number.
+
+ If the parents of the function cannot be determined, the word
+ `<spontaneous>' is printed in the `name' field, and all the other
+ fields are blank.
+
+ For the function's children, the fields have the following meanings:
+
+     self	This is the amount of time that was propagated directly
+		from the child into the function.
+
+     children	This is the amount of time that was propagated from the
+		child's children to the function.
+
+     called	This is the number of times the function called
+		this child `/' the total number of times the child
+		was called.  Recursive calls by the child are not
+		listed in the number after the `/'.
+
+     name	This is the name of the child.  The child's index
+		number is printed after it.  If the child is a
+		member of a cycle, the cycle number is printed
+		between the name and the index number.
+
+ If there are any cycles (circles) in the call graph, there is an
+ entry for the cycle-as-a-whole.  This entry shows who called the
+ cycle (as parents) and the members of the cycle (as children.)
+ The `+' recursive calls entry shows the number of function calls that
+ were internal to the cycle, and the calls entry for each member shows,
+ for that member, how many times it was called from other members of
+ the cycle.
+
+Copyright (C) 2012-2025 Free Software Foundation, Inc.
+
+Copying and distribution of this file, with or without modification,
+are permitted in any medium without royalty provided the copyright
+notice and this notice are preserved.
+
+Index by function name
+
+ [104] ReferenceApp::ReferenceApp() [92] avs_get_font::{lambda(void*, void*)#1}::operator int (*)(void*, void*)() const [50] getu16
+ [105] AVS::App::output_diagnostic() [90] avs_get_font::{lambda(void*, void*)#1}::_FUN(void*, void*) [22] getu32
+  [35] AVS::App::run()        [87] AVS::Font::get_size(unsigned short, bool)::{lambda(void*, void*)#1}::operator int (*)(void*, void*)() const [49] getu8
+   [2] AVS::App::draw()        [8] AVS::Object::draw()::{lambda(void*)#1}::operator()(void*) const [45] glyph_bbox
+ [106] AVS::App::get_name()  [102] AVS::Object::draw()::{lambda(void*)#1}::operator void (*)(void*)() const [18] glyph_id
+ [107] AVS::App::App(char const*) [103] AVS::Object::draw()::{lambda(void*)#1}::_FUN(void*) [59] grow_lines
+   [4] AVS::Font::prime_cache(unsigned short) [36] _init  [58] grow_points
+   [5] AVS::Font::get_size(unsigned short, bool) [6] avs_draw_char_ttf [44] hor_metrics
+  [43] AVS::Font::get_glyph(unsigned int, unsigned short, AVS::font_ttf_bitmap*) [33] avs_draw_rect [46] init_font
+  [41] AVS::Font::Font(char const*, char const*) [7] avs_draw_string [55] init_outline
+  [93] AVS::List::insert_after(AVS::Node*, void*) [61] avs_get_font [40] initalize_fonts
+  [94] AVS::List::insert_before(AVS::Node*, void*) [62] avs_platform_copy_b_to_f [31] is_flat
+  [95] AVS::List::push(void*) [64] avs_platform_init      [37] is_safe_offset
+  [96] AVS::List::append(void*) [65] avs_platform_init_linux [32] midpoint
+  [97] AVS::List::prepend(void*) [66] avs_render_ttf_bitmap [27] outline_offset
+  [98] AVS::List::for_each(void (*)(void*)) [67] avs_sdl_init [20] post_process
+  [86] AVS::List::find_data(void*, int (*)(void*, void*)) [34] avs_sdl_main_loop [11] render_outline
+  [88] AVS::List::List()      [63] avs_sdl_update_sdl_window [57] sc_reallocarray
+  [99] AVS::Object::update_sizes() [53] clip_points       [38] sft_gmetrics
+ [100] AVS::Object::draw()    [21] cmap_fmt12_13          [48] sft_lmetrics
+ [108] AVS::Object::find_app() [42] compound_outline      [47] sft_loadmem
+ [101] AVS::Object::add_child(AVS::Object*) [25] decode_contour [19] sft_lookup
+ [109] AVS::Object::add_child(AVS::Object*, AVS::Object*) [16] decode_outline [10] sft_render
+  [91] AVS::Object::Object()  [13] draw_line              [28] simple_flags
+  [15] AVS::Window::draw()    [12] draw_lines             [17] simple_outline
+ [110] AVS::Window::get_title() [26] fast_ceil            [23] simple_points
+ [111] AVS::Window::set_title(char const*) [24] fast_floor [29] tesselate_curve
+ [112] AVS::Window::Window(unsigned short, unsigned short, unsigned short, unsigned short) [54] free_outline [30] tesselate_curves
+ [113] AVS::Console::output_diagnostic() [60] get_avs_platform [52] transform_points
+   [9] AVS::Console::draw()   [51] geti16                 [14] <cycle 1>
+ [114] AVS::Console::Console(unsigned short, unsigned short, unsigned short, unsigned short, unsigned int, unsigned int) [56] geti8 [3] <cycle 2>
+  [89] avs_get_font::{lambda(void*, void*)#1}::operator()(void*, void*) const [39] gettable

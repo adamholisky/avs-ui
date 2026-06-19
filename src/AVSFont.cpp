@@ -194,7 +194,7 @@ font_size* Font::get_size( uint16_t size, bool do_prime_cache ) {
 		return fs_int_a == fs_b->font_size ? 1 : 0; 
 	});
 
-	if( fs == nullptr && do_prime_cache ) {
+	if( fs == nullptr ) {
 		fs = prime_cache( size );
 	}
 

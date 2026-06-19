@@ -14,6 +14,7 @@ Object::Object( void ) {
 	inner_height = 0;
 	container_offset_x = 0;
 	container_offset_y = 0;
+	parent = nullptr;
 
 	children = new List();
 }
@@ -77,7 +78,7 @@ Object* Object::find_app( void ) {
 uint16_t Object::get_absolute_x( void ) {
 	uint16_t parent_abs_x = this->parent == nullptr ? 0 : parent->get_absolute_x();
 
-	printf( "returning abs_x: %d (%d + %d + %d)\n", this->x + parent_abs_x + container_offset_x, this->x, parent_abs_x, container_offset_x );
+	//printf( "returning abs_x: %d (%d + %d + %d)\n", this->x + parent_abs_x + container_offset_x, this->x, parent_abs_x, container_offset_x );
 
 	return this->x + parent_abs_x + container_offset_x;
 }
@@ -85,7 +86,7 @@ uint16_t Object::get_absolute_x( void ) {
 uint16_t Object::get_absolute_y( void ) {
 	uint16_t parent_abs_y = this->parent == nullptr ? 0 : parent->get_absolute_y();
 
-	printf( "returning abs_y: %d\n", this->x + parent_abs_y + container_offset_y );
+	//printf( "returning abs_y: %d\n", this->x + parent_abs_y + container_offset_y );
 
 	return this->y + parent_abs_y + container_offset_y;
 }

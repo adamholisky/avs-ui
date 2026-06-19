@@ -59,18 +59,17 @@ uint16_t avs_draw_string( const char *s, uint16_t x, uint16_t y, uint32_t fg, ui
 	int current_x = x;
 	uint16_t pix_len = 0;
 	Font *f = ( font == NULL ? avs_get_main_font() : font );
+	font_size *fs = font->get_size(size);
 
 	for( int i = 0; i < len; i++ ) {
-		if( f->type == AVS_FONT_TYPE_TTF ) {
-			uint32_t char_num = *s;
+		uint32_t char_num = *s;
 
-			uint16_t advance_x = avs_draw_char_ttf( char_num, current_x, y, fg, bg, f, size, flags );
+		uint16_t advance_x = avs_draw_char_ttf_fsize( char_num, current_x, y, fg, bg, f, size, fs, flags );
 
-			//vdf( "final width: %d\n", font->ttf_bitmaps[char_num].advance + 1 );
+		//vdf( "final width: %d\n", font->ttf_bitmaps[char_num].advance + 1 );
 
-			current_x = current_x + advance_x + 1;
-			pix_len = pix_len + advance_x + 1;
-		}
+		current_x = current_x + advance_x + 1;
+		pix_len = pix_len + advance_x + 1;
 		
 		s++;
 	}
@@ -92,9 +91,15 @@ uint16_t avs_draw_string( const char *s, uint16_t x, uint16_t y, uint32_t fg, ui
  * @return uint16_t the amount to advance x pixels forward to account for the character
  */
 uint16_t avs_draw_char_ttf( uint32_t char_num, uint16_t x, uint16_t y, uint32_t fg, uint32_t bg, AVS::Font *font, uint16_t size, uint64_t flags ) {
-	avs_platform *avsp = get_avs_platform();
-
 	font_size *fs = font->get_size( size );
+
+	return avs_draw_char_ttf_fsize( char_num, x, y, fg, bg, font, size, fs, flags );
+}
+
+/* This should go away, there's something up with the caching that's not keeping fs around, causing it to get called fully+render for every character, despite the correct logic.
+*/
+uint16_t avs_draw_char_ttf_fsize( uint32_t char_num, uint16_t x, uint16_t y, uint32_t fg, uint32_t bg, AVS::Font *font, uint16_t size, AVS::font_size *fs, uint64_t flags ) {
+	avs_platform *avsp = get_avs_platform();
 	font_ttf_bitmap *bitm = nullptr;
 
 	if( char_num < 256 ) {

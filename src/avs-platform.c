@@ -91,6 +91,8 @@ avs_platform* get_avs_platform( void ) {
  * @param color 
  */
 void avs_draw_rect( uint16_t x, uint16_t y, uint16_t width, uint16_t height, uint32_t color ) {
+	printf( "Draw Rect: x=%d  y=%d  width=%d  height=%d  color=0x%X\n", x, y, width, height, color );
+
 	uint32_t offset_x = x;
 	uint32_t offset_y = y * avs_p.screen_pitch / 4;
 
