@@ -127,7 +127,30 @@ inline void Console::con_put_char( const uint32_t char_code) {
 }
 
 void Console::process_escape( const uint32_t char_code ) {
+	switch( char_code ) {
+		case '\e':
+			esc_capture_num = 0;
+			break;
+		default:
+			esc_part[ esc_capture_num++ ] = char_code;
+	}
 
+	bool is_completed = false;
+
+	if( !avs_isdigit(char_code) ) {
+		// we're done?
+		is_completed = true;
+	}
+
+	if( is_completed ) {
+		switch( esc_part[esc_capture_num - 1] ) {
+			case 'm':
+				char num_one[5];
+				char num_two[5];
+				
+				break;
+		}
+	}
 }
 
 inline void Console::con_put_char_at( const uint32_t char_code, uint16_t row, uint16_t col ) {

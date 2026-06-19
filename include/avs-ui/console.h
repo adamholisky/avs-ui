@@ -88,6 +88,7 @@ namespace AVS {
 
 		bool is_capturing_esc_code;
 		uint8_t esc_capture_num;
+		uint32_t esc_part[25];
 
 		Console( uint16_t x_cords, uint16_t y_cords, uint16_t px_width, uint16_t px_height, uint32_t fg, uint32_t bg );
 

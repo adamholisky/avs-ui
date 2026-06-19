@@ -28,6 +28,7 @@ extern "C" {
     #include <dirent.h>
     #include <unistd.h>
     #include <errno.h>
+	#include <ctype.h>
 
 	#define AVS_PLATFORM AVS_PFORM_LINUX
 #else
@@ -48,6 +49,7 @@ extern "C" {
     #define avs_strlen kstrlen
 	#define avs_memcpy kmemcpy
 	#define avs_strcmp kstrcmp
+	#define avs_isdigit kisdigit
 #elif AVS_ENV_LINUX
 	#define avs_malloc malloc
 	#define avs_realloc realloc
@@ -58,6 +60,7 @@ extern "C" {
     #define avs_strlen strlen
 	#define avs_memcpy memcpy
 	#define avs_strcmp strcmp
+	#define avs_isdigit isdigit
 #endif
 
 /**************************************/
