@@ -29,6 +29,9 @@ extern "C" {
     #include <unistd.h>
     #include <errno.h>
 	#include <ctype.h>
+	#include <pty.h>
+	#include <utmp.h>
+	#include <fcntl.h>
 
 	#define AVS_PLATFORM AVS_PFORM_LINUX
 #else

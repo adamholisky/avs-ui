@@ -18,6 +18,7 @@ namespace AVS {
 		bool is_drawable;
 		bool is_hover;
 		bool is_visible;
+		bool is_dirty;
 
 		uint16_t x_abs;
 		uint16_t y_abs;

@@ -46,7 +46,7 @@ Console::Console( uint16_t x_cords, uint16_t y_cords, uint16_t px_width, uint16_
 	esc_capture_num = 0;
 	tab_size = 4;
 
-	populate_test_data();
+	//populate_test_data();
 }
 
 void Console::output_diagnostic( void ) {
@@ -87,7 +87,7 @@ void Console::put_char( const uint32_t char_code ) {
 	con_put_char( char_code );
 }
 
-inline void Console::con_put_char( const uint32_t char_code) {
+inline void Console::con_put_char( const uint32_t char_code ) {
 	switch( (char)char_code ) {
 		case '\x1b':
 			is_capturing_esc_code = true;
