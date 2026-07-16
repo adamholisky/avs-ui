@@ -1,0 +1,14 @@
+CompileFlags:
+  Add:
+    - -I./include
+    - -I./src
+  Compiler: gcc
+
+InlayHints:
+  Enabled: true
+  ParameterHints: true
+  TypeHints: true
+  DeducedTypes: true
+
+Index:
+  Background: Build

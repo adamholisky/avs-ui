@@ -1,14 +1,11 @@
 vim.notify("AVS-UI .nvim.lua loaded!", vim.log.levels.INFO)
 
 -- layout
-vim.schedule(function()
-  local height = math.floor(vim.o.lines / 3)
-  vim.cmd('split')
-  vim.cmd('terminal')
-  vim.cmd('resize ' .. height)
-end)
-
 require('nvim-tree.api').tree.open()
+
+vim.schedule(function()
+	require('toggleterm').toggle(nil, nil, nil, 'horizontal')
+end)
 -- Editor basics
 vim.opt_local.tabstop = 4
 vim.opt_local.shiftwidth = 4
