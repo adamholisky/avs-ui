@@ -3,9 +3,10 @@ vim.notify("AVS-UI .nvim.lua loaded!", vim.log.levels.INFO)
 -- layout
 require('nvim-tree.api').tree.open()
 
-vim.schedule(function()
-	require('toggleterm').toggle(nil, nil, nil, 'horizontal')
-end)
+-- vim.schedule(function()
+--	require('toggleterm').toggle(nil, nil, nil, 'horizontal')
+-- end)
+
 -- Editor basics
 vim.opt_local.tabstop = 4
 vim.opt_local.shiftwidth = 4
